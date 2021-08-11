@@ -26,12 +26,10 @@ const drawText = (txt) => {
     gCtx.lineWidth = 2
     gCtx.strokeStyle = txt.colorStroke;
     gCtx.fillStyle = txt.colorFill;
-    gCtx.textAlign = txt.align;
     gCtx.font = txt.fontSize + 'px ' + txt.font;
     gCtx.fillText(txt.text, txt.pos.x, txt.pos.y)
     gCtx.strokeText(txt.text, txt.pos.x, txt.pos.y)
     gCtx.save()
-
 }
 
 const onSetColorFill = (color) => {
