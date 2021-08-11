@@ -10,7 +10,24 @@
 </head>
 
 <body onload="init()">
-    <section class="gallery-container grid"></section>
+    <header class="gallery-header flex align-center space-between">
+        <img class="logo" src="img/logo.png" alt="">
+        <nav>
+            <ul class="header-nav clean-list flex space-between">
+                <li><a>Gallery</a></li>
+                <li><a>Memes</a></li>
+                <li><a>About</a></li>
+                <li><select>
+                    <option>English</option>
+                    <option>Hebrew</option>
+                </select>
+            </li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <div class="gallery-container grid main-layout "></div>
+    </section>
 
     <section class="canvas-container">
         <h1>Hi Canvas</h1>
