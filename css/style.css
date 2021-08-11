@@ -10,7 +10,7 @@
 
 body {
   font-size: 1rem;
-  font-family: Montserrat,'Impact','sans-serif','monospace';
+  font-family: Montserrat, "Impact", "sans-serif", "monospace";
   margin: 0;
   padding: 0;
   height: 100vh;
@@ -21,7 +21,7 @@ body {
 /* LAYOUTS */
 
 .main-layout {
-  max-width: 980px;
+  max-width: 1060px;
   margin: 0 auto;
 }
 
@@ -54,7 +54,7 @@ body {
 }
 
 /* HEADER */
-.gallery-header {
+header{
   background-color: #ff7f00;
 }
 
@@ -64,7 +64,7 @@ body {
 }
 
 /*HEADER NAV*/
-.header-nav > li{
+.header-nav > li {
   cursor: pointer;
 }
 
@@ -79,35 +79,58 @@ body {
   transition: box-shadow 0.8s;
 }
 
-.header-nav > li:hover > a{
+.header-nav > li:hover > a {
   box-shadow: inset 0 -3px 0 #040a2c;
 }
 
 /* GALLERY */
 
-.gallery-container {
+main {
   background-color: #e3e3e3;
-  grid-template-columns: repeat(auto-fill, minmax(240px,400px));
-  /* grid-template-columns: repeat(4, 150px);
-  grid-template-rows: repeat(3, 1fr); */
-  grid-gap: 20px;
+}
+.gallery-container {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  justify-items: center;
+  margin: 0 auto;
+  grid-gap: 1.5rem;
+}
+
+.gallery-frame {
+  padding: .5rem;
+  font-size: 1.2rem;
+  text-align: center;
+  background-color: #333;
+  color: #d9d9d9;
 }
 
 .gallery-image {
   object-fit: cover;
-  width: 150px;
+  max-width: 100%;
   cursor: pointer;
-  transition: all 0.5s;
-  border: 6px solid rgb(216, 215, 215);
+  height: auto;
+  transition: opacity 0.25s ease-in-out;
 }
 
-.canvas-container {
-  display: none;
+.gallery-image:hover {
+  opacity: .75;
 }
 
+/* CANVAS */
+
+.meme-container{
+  background-color: #e3e3e3;
+  display:none;
+}
 canvas {
   display: block;
   margin: 0 auto;
   outline: 1px solid black;
   background-color: white;
 }
+
+/* ICONS */
+.icons{
+  width: 25px;
+  height: 25px;
+}
+

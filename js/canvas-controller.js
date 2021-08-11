@@ -154,7 +154,7 @@ const onChangeFont = (font) => {
 
 const toggleCanvas = (state) => {
     const display = (state === 'none') ? 'none' : 'block'
-    document.querySelector('.canvas-container').style.display = display
+    document.querySelector('.meme-container').style.display = display
 }
 
 const onImage = imgId => {

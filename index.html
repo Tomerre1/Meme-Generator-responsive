@@ -10,53 +10,59 @@
 </head>
 
 <body onload="init()">
-    <header class="gallery-header flex align-center space-between">
-        <img class="logo" src="img/logo.png" alt="">
-        <nav>
-            <ul class="header-nav clean-list flex space-between">
-                <li><a>Gallery</a></li>
-                <li><a>Memes</a></li>
-                <li><a>About</a></li>
-                <li><select>
-                    <option>English</option>
-                    <option>Hebrew</option>
-                </select>
-            </li>
-            </ul>
-        </nav>
+    <header>
+        <div class="gallery-header flex align-center space-between main-layout">
+            <img class="logo" src="img/logo.png" alt="">
+            <nav>
+                <ul class="header-nav clean-list flex space-between">
+                    <li><a>Gallery</a></li>
+                    <li><a>Memes</a></li>
+                    <li><a>About</a></li>
+                    <!-- <li><select>
+                        <option>English</option>
+                        <option>Hebrew</option>
+                    </select> -->
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </header>
-    <section>
-        <div class="gallery-container grid main-layout "></div>
-    </section>
 
-    <section class="canvas-container">
-        <h1>Hi Canvas</h1>
-        <select class="meme-font" onchange="onChangeFont(this.value)">
-            <option value="Impact">Impact</option>
-            <option value="Monospace">Monospace</option>
-            <option value="sarif">Serif</option>
-            <option value="Arial">Arial</option>
-            <option value="san-sarif">San-Sarif</option>
-        </select>
-        <button onclick="onDeleteLine()">Delete</button>
-        <input type="text" class="meme-txt" name="meme-txt" placeholder="Enter Text" />
-        <input value="#000000" name="color-stroke" type="color" onchange="onSetColorStroke(this.value)" />
-        <input type="color" name="color-fill" onchange="onSetColorFill(this.value)" value="#ffffff" />
-        <button onclick="onPlus()">+</button>
-        <button onclick="onMinus()">-</button>
-        <button onclick="onUp()">up</button>
-        <button onclick="onDown()">Down</button>
-        <button onclick="onRight()">Right</button>
-        <button onclick="onLeft()">Left</button>
-        <button onclick="onAddLine()">Add Line</button>
-        <button onclick="onSwitchLine()">Switch Line</button>
-        <button onclick="onAlign('left')">Align Left</button>
-        <button onclick="onAlign('center')">Align Center</button>
-        <button onclick="onAlign('right')">Align Right</button>
-        <canvas id="my-canvas" height="450" width="450"></canvas>
-        <a href="#" onclick="downloadCanvas(this)" download="myMeme">Download</a>
-    </section>
+    <main>
+        <div class="gallery-container grid main-layout main-layout"></div>
+    </main>
 
+    <section class="meme-container">
+        <div class="canvas-container main-layout flex">
+            <canvas id="my-canvas" height="450" width="450"></canvas>
+
+            <div class="meme-buttons grid">
+                <select class="meme-font" onchange="onChangeFont(this.value)">
+                    <option value="Impact">Impact</option>
+                    <option value="Monospace">Monospace</option>
+                    <option value="sarif">Serif</option>
+                    <option value="Arial">Arial</option>
+                    <option value="san-sarif">San-Sarif</option>
+                </select>
+                <button onclick="onDeleteLine()"><img src="icons/trash.png" class="icons"/></button>
+                <input type="text" class="meme-txt" name="meme-txt" placeholder="Enter Text" />
+                <input value="#000000" name="color-stroke" type="color" onchange="onSetColorStroke(this.value)" />
+                <input type="color" name="color-fill" onchange="onSetColorFill(this.value)" value="#ffffff" />
+                <button onclick="onPlus()"><img src="icons/increase font - icon.png" class="icons"/></button>
+                <button onclick="onMinus()"><img src="icons/decrease font - icon.png" class="icons"/></button>
+                <button onclick="onUp()"><img src="icons/arrow-up-solid.svg" class="icons"/></button>
+                <button onclick="onDown()"><img src="icons/arrow-down-solid.svg" class="icons"/></button>
+                <button onclick="onRight()"><img src="icons/arrow-right-solid.svg" class="icons"/></button>
+                <button onclick="onLeft()"><img src="icons/arrow-left-solid.svg" class="icons"/></button>
+                <button onclick="onAddLine()"><img src="icons/add.png" class="icons"/></button>
+                <button onclick="onSwitchLine()"><img src="icons/up-and-down-opposite-double-arrows-side-by-side.png" class="icons"/></button>
+                <button onclick="onAlign('left')"><img src="icons/align-to-left.png" class="icons"/></button>
+                <button onclick="onAlign('center')"><img src="icons/center-text-alignment.png" class="icons"/></button>
+                <button onclick="onAlign('right')"><img src="icons/align-to-right.png" class="icons"/></button>
+            </div>
+            <a href="#" onclick="downloadCanvas(this)" download="myMeme">Download</a>
+        </div>
+    </section>
     <script src="js/storage-service.js"></script>
     <script src="js/gallery-service.js"></script>
     <script src="js/gallery-controller.js"></script>
