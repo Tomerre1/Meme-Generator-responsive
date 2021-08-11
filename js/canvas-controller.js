@@ -4,6 +4,7 @@ let gCtx
 let gInput
 let gImg
 let isDownload = false;
+
 const init = () => {
     gCanvas = document.getElementById('my-canvas')
     gCtx = gCanvas.getContext('2d')
@@ -151,12 +152,16 @@ const onChangeFont = (font) => {
     renderCanvas()
 }
 
+const toggleCanvas = (state) => {
+    const display = (state === 'none') ? 'none' : 'block'
+    document.querySelector('.canvas-container').style.display = display
+}
 
 const onImage = imgId => {
     clearText()
     setSelectedImage(+imgId)
-    document.querySelector('.canvas-container').style.display = 'block'
-    document.querySelector('.gallery-container').style.display = 'none'
+    toggleCanvas('block') 
+    toggleGallery('none')
     renderCanvas()
 }
 

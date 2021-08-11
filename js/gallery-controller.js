@@ -5,3 +5,8 @@ const renderGallery = () => {
     }).join('')
     document.querySelector('.gallery-container').innerHTML = strHTML
 }
+
+const toggleGallery = (state) => {
+    const display = (state === 'none') ? 'none' : 'block'
+    document.querySelector('.gallery-container').style.display = display
+}
