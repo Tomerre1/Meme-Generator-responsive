@@ -8,7 +8,7 @@ let gMeme = {
 
 
 
-const createLine = (text = '', font = 'Arial', colorFill = '#ffffff',
+const createLine = (text = '', font = 'Impact', colorFill = '#ffffff',
     colorStroke = '#000000', fontSize = 30, align = 'left') => {
     const memeTxt = {
         font,

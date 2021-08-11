@@ -7,6 +7,7 @@ let isDownload = false;
 const init = () => {
     gCanvas = document.getElementById('my-canvas')
     gCtx = gCanvas.getContext('2d')
+    renderGallery()
     createLine()
     addEventListeners()
 }
