@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Meme Maker</title>
+</head>
+
+<body onload="init()">
+    <section class="gallery-container grid"> 
+        <img onclick="onImage(1)" class="gallery-image" src="img/1.jpg"/>
+        <img onclick="onImage(2)" class="gallery-image" src="img/2.jpg"/>
+        <img onclick="onImage(3)" class="gallery-image" src="img/3.jpg"/>
+        <img onclick="onImage(4)" class="gallery-image" src="img/4.jpg"/>
+        <img onclick="onImage(5)" class="gallery-image" src="img/5.jpg"/>
+        <img onclick="onImage(6)" class="gallery-image" src="img/6.jpg"/>
+        <img onclick="onImage(7)" class="gallery-image" src="img/7.jpg"/>
+        <img onclick="onImage(8)" class="gallery-image" src="img/8.jpg"/>
+        <img onclick="onImage(9)" class="gallery-image" src="img/9.jpg"/>
+        <img onclick="onImage(10)" class="gallery-image" src="img/10.jpg"/>
+        <img onclick="onImage(11)" class="gallery-image" src="img/11.jpg"/>
+        <img onclick="onImage(12)" class="gallery-image" src="img/12.jpg"/>
+        <img onclick="onImage(13)" class="gallery-image" src="img/13.jpg"/>
+        <img onclick="onImage(14)" class="gallery-image" src="img/14.jpg"/>
+        <img onclick="onImage(15)" class="gallery-image" src="img/15.jpg"/>
+        <img onclick="onImage(16)" class="gallery-image" src="img/16.jpg"/>
+        <img onclick="onImage(17)" class="gallery-image" src="img/17.jpg"/>
+        <img onclick="onImage(18)" class="gallery-image" src="img/18.jpg"/>
+    </section>
+
+    <section class="canvas-container">
+        <h1>Hi Canvas</h1>
+        <select class="meme-font" onchange="onChangeFont(this.value)">
+            <option value="Arial">Arial</option>
+            <option value="sarif">sarif</option>
+            <option value="san-sarif">san-sarif</option>
+        </select>
+        <button onclick="onDeleteLine()">Delete</button>
+        <input type="text" class="meme-txt" name="meme-txt" placeholder="Enter Text" />
+        <input value="#000000" name="color-stroke" type="color" onchange="onSetColorStroke(this.value)" />
+        <input type="color" name="color-fill" onchange="onSetColorFill(this.value)" value="#ffffff" />
+        <button onclick="onPlus()">+</button>
+        <button onclick="onMinus()">-</button>
+        <button onclick="onUp()">up</button>
+        <button onclick="onDown()">Down</button>
+        <button onclick="onRight()">Right</button>
+        <button onclick="onLeft()">Left</button>
+        <button onclick="onAddLine()">Add Line</button>
+        <button onclick="onSwitchLine()">Switch Line</button>
+        <button onclick="onAlign('left')">Align Left</button>
+        <button onclick="onAlign('center')">Align Center</button>
+        <button onclick="onAlign('right')">Align Right</button>
+        <canvas id="my-canvas" height="450" width="450"></canvas>
+        <a href="#" onclick="downloadCanvas(this)" download="myMeme">Download</a>
+    </section>
+
+    <script src="js/storage-service.js"></script>
+    <script src="js/canvas-service.js"></script>
+    <script src="js/main-controller.js"></script>
+
+</body>
+
+</html>

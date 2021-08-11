@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+.display-grid {
+  display: grid;
+}
+
+
+.gallery-container {
+    grid-template-columns: repeat(4,150px);
+    grid-template-rows: repeat(3,1fr);
+    grid-gap: 10px;
+    
+}
+
+.gallery-image{
+    object-fit: cover;
+    width: 150px;
+    cursor: pointer;
+    transition: all 0.5s;
+    border: 6px solid rgb(216, 215, 215);
+}
+
+.canvas-container {
+    display: none
+}
+canvas {
+  display: block;
+  margin: 0 auto;
+  outline: 1px solid black;
+  background-color: white;
+}
+
+.display-none{
+    display:none;
+}
+

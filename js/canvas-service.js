@@ -1,0 +1,110 @@
+'use strict'
+const MEMES_DB = 'meme_db'
+let gMeme = {
+    selectedImgId: 5,
+    selectedLineIdx: -1,
+    lines: []
+}
+
+
+
+const createLine = (text = '', font = 'Arial', colorFill = '#ffffff',
+    colorStroke = '#000000', fontSize = 30, align = 'left') => {
+    const memeTxt = {
+        font,
+        pos: { x: 50, y: (50 * gMeme.lines.length) + 50 },
+        colorFill,
+        colorStroke,
+        fontSize,
+        text,
+        align
+    }
+    gMeme.lines.push(memeTxt)
+    gMeme.selectedLineIdx++;
+    saveToStorage(MEMES_DB, gMeme)
+}
+
+
+const getTexts = () => { return loadFromStorage(MEMES_DB) }
+
+const setTexts = txt => {
+    if(!gMeme.lines.length) {
+        setSelectedLineIdx(-1)
+        createLine()
+    }
+    gMeme.lines[gMeme.selectedLineIdx].text = txt
+    saveToStorage(MEMES_DB, gMeme)
+}
+
+const getMeme = () => { return loadFromStorage(MEMES_DB) }
+
+const setSelectedLineIdx = ind => { gMeme.selectedLineIdx = ind }
+
+const getSelectedLine = () => { return gMeme.selectedLineIdx}
+
+const switchLine = () => { 
+    gMeme.selectedLineIdx = (gMeme.selectedLineIdx >= gMeme.lines.length - 1) ? 0 : ++gMeme.selectedLineIdx; 
+}
+
+const setColorFill = (color) => {
+    gMeme.lines[gMeme.selectedLineIdx].colorFill = color
+    saveToStorage(MEMES_DB, gMeme)
+}
+
+const setColorStroke = (color) => {
+    gMeme.lines[gMeme.selectedLineIdx].colorStroke = color
+    saveToStorage(MEMES_DB, gMeme)
+}
+
+const setFont = (font) => {
+    gMeme.lines[gMeme.selectedLineIdx].font = font
+    saveToStorage(MEMES_DB, gMeme)
+}
+
+const setFontSize = (size) => {
+    gMeme.lines[gMeme.selectedLineIdx].fontSize += size
+    saveToStorage(MEMES_DB, gMeme)
+}
+
+const setPosX = (size) => {
+    gMeme.lines[gMeme.selectedLineIdx].pos.x += size
+    saveToStorage(MEMES_DB, gMeme)
+}
+
+const setPosY = (size) => {
+    gMeme.lines[gMeme.selectedLineIdx].pos.y += size
+    saveToStorage(MEMES_DB, gMeme)
+}
+
+const setSelectedImage = imgId => { gMeme.selectedImgId = imgId }
+
+const getSelectedImage = () => { return gMeme.selectedImgId }
+
+const deleteLine = () => {
+    gMeme.lines.splice(gMeme.selectedLineIdx, 1)
+    switchLine()
+    saveToStorage(MEMES_DB,gMeme)
+}
+
+//fix align לא מדויק
+const setAlign = side =>{ 
+    gMeme.lines[gMeme.selectedLineIdx].align = side
+    saveToStorage(MEMES_DB, gMeme)
+}
+
+const clearText = () => { 
+    gMeme.lines = []
+    gMeme.selectedLineIdx = -1
+    saveToStorage(MEMES_DB,gMeme)
+}
+
+const getCurrentLineMeasures =  () => {
+    console.log(gMeme.lines[getSelectedLine()].pos.x,gMeme.lines[getSelectedLine()].pos.y,gCtx.measureText(gMeme.lines[getSelectedLine()].text).width,gMeme.lines[getSelectedLine()].fontSize);
+    return {
+        x:gMeme.lines[getSelectedLine()].pos.x,
+        y:gMeme.lines[getSelectedLine()].pos.y,
+        textLength: gCtx.measureText(gMeme.lines[getSelectedLine()].text).width,
+        textHeight: gMeme.lines[getSelectedLine()].fontSize
+    }
+}
+
