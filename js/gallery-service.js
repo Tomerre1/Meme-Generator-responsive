@@ -56,3 +56,11 @@ const filterInput = () => {
         return (words.includes(filterBy.toLowerCase()))
     })
 }
+
+const setSelectedImage = imgId => { gMeme.selectedImgId = imgId }
+
+const getSelectedImage = () => { return gMeme.selectedImgId }
+
+const getImageById = (id) => {
+    return gImgs.find(img => img.id === id)
+}

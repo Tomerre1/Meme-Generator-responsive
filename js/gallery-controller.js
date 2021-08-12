@@ -74,16 +74,7 @@ const onMore = () => {
     renderKeywords()
 }
 
-const onImage = imgId => {
-    clearText()
-    document.querySelector('[name=meme-txt]').value = ''
-    setSelectedImage(+imgId)
-    toggleCanvas('block')
-    toggleGallery('none')
-    toggleSearch('none')
-    toggleAbout('none')
-    renderCanvas()
-}
+
 
 const toggleMenu = () => {
     document.body.classList.toggle('menu-open');
@@ -94,4 +85,46 @@ const onAbout = () => {
     toggleGallery('none')
     toggleSearch('none')
     toggleAbout('flex')
+}
+
+const onMemes = () => {
+    toggleCanvas('none')
+    toggleGallery('grid')
+    toggleSearch('none')
+    toggleAbout('none')
+    renderSaveMemes()
+}
+
+const renderSaveMemes = () => {
+    const savedMemes = getSavedMemes()
+    const strHTML = savedMemes.map((meme) => {
+        return `<div class="gallery-frame">
+                        <img onclick="onSavedMeme(${meme.id})" class="gallery-image" src="${getImageById(meme.selectedImgId).url}">
+                        <div>${getImageById(meme.selectedImgId).keywords.join(' , ')}</div>
+                    </div>`
+    }).join('')
+    document.querySelector('.gallery-container').innerHTML = strHTML
+}
+
+// const onSavedMeme = (memeId) => {
+//     //todo: getmeme by id and fix function to edit meme//
+//     document.querySelector('[name=meme-txt]').value = ''
+//     initMeme()
+//     setSelectedImage(+imgId)
+//     toggleCanvas('block')
+//     toggleGallery('none')
+//     toggleSearch('none')
+//     toggleAbout('none')
+//     renderCanvas()
+// }
+
+const onImage = imgId => {
+    document.querySelector('[name=meme-txt]').value = ''
+    initMeme()
+    setSelectedImage(+imgId)
+    toggleCanvas('block')
+    toggleGallery('none')
+    toggleSearch('none')
+    toggleAbout('none')
+    renderCanvas()
 }

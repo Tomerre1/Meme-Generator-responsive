@@ -10,7 +10,6 @@ const init = () => {
     gCtx = gCanvas.getContext('2d')
     renderGallery()
     renderKeywords()
-    createLine()
     addEventListeners()
 }
 
@@ -30,16 +29,15 @@ const resizeCanvas = () => {
     renderCanvas()
 }
 
-const drawText = (txt,selectedInd) => {
+const drawText = (x, y, text, colorStroke, colorFill, fontSize, font, selectedInd) => {
     gCtx.lineWidth = 2
-    gCtx.strokeStyle = txt.colorStroke;
-    gCtx.fillStyle = txt.colorFill;
-    gCtx.font = txt.fontSize + 'px ' + txt.font;
-    gCtx.fillText(txt.text, txt.pos.x, txt.pos.y)
-    gCtx.strokeText(txt.text, txt.pos.x, txt.pos.y)
-    if(!isDownload && selectedInd === getSelectedLine()) drawRect(txt.pos.x, txt.pos.y, gCtx.measureText(txt.text).width, txt.fontSize)
+    gCtx.strokeStyle = colorStroke;
+    gCtx.fillStyle = colorFill;
+    gCtx.font = fontSize + 'px ' + font;
+    gCtx.fillText(text, x, y)
+    gCtx.strokeText(text, x, y)
+    if (!isDownload && selectedInd === getSelectedLine()) drawRect(x, y, gCtx.measureText(text).width, fontSize)
     gCtx.save()
-
 }
 
 const renderCanvas = () => {
@@ -47,8 +45,8 @@ const renderCanvas = () => {
     gImg.src = `img/${getSelectedImage()}.jpg`
     gImg.onload = () => {
         gCtx.drawImage(gImg, 0, 0, gCanvas.width, gCanvas.height)
-        getMeme().lines.forEach((txt,ind) => {
-            drawText(txt,ind)
+        getMeme().lines.forEach((txt, ind) => {
+            drawText(txt.pos.x, txt.pos.y, txt.text, txt.colorStroke, txt.colorFill, txt.fontSize, txt.font, ind)
         })
     }
 
@@ -107,6 +105,10 @@ const onLeft = () => {
     setPosX(-10)
     clearCanvas()
     renderCanvas()
+}
+
+const onSave = () => {
+    saveMeme()
 }
 
 const clearCanvas = () => {

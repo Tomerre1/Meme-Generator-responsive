@@ -1,27 +1,38 @@
 'use strict'
 const MEMES_DB = 'meme_db'
-let gMeme = {
-    selectedImgId: 5,
-    selectedLineIdx: -1,
-    lines: []
+let gMeme = {}
+
+let gMemes = []
+
+
+const initMeme = () => {
+    
+    gMeme.selectedImgId = -1
+    gMeme.selectedLineIdx = -1
+    gMeme.lines = []
+    createLine()
+    gMeme.id = makeId()
 }
-
-
 const createLine = (text = '', font = 'Impact', colorFill = '#ffffff',
-    colorStroke = '#000000', fontSize = 30, align = 'left') => {
+    colorStroke = '#000000', fontSize = 30) => {
     const memeTxt = {
         font,
         pos: { x: 50, y: (50 * gMeme.lines.length) + 50 },
         colorFill,
         colorStroke,
         fontSize,
-        text,
-        align
+        text
     }
     gMeme.lines.push(memeTxt)
     gMeme.selectedLineIdx++;
-    saveToStorage(MEMES_DB, gMeme)
 }
+
+const saveMeme = () => {
+    gMemes.push(JSON.parse(JSON.stringify(gMeme)))
+    saveToStorage(MEMES_DB, gMemes)
+}
+
+const getSavedMemes = () => { return loadFromStorage(MEMES_DB) }
 
 const setTexts = txt => {
     if (!gMeme.lines.length) {
@@ -29,10 +40,9 @@ const setTexts = txt => {
         createLine()
     }
     gMeme.lines[gMeme.selectedLineIdx].text = txt
-    saveToStorage(MEMES_DB, gMeme)
 }
 
-const getMeme = () => { return loadFromStorage(MEMES_DB) }
+const getMeme = () => { return gMeme }
 
 const setSelectedLineIdx = ind => { gMeme.selectedLineIdx = ind }
 
@@ -44,42 +54,32 @@ const switchLine = () => {
 
 const setColorFill = (color) => {
     gMeme.lines[gMeme.selectedLineIdx].colorFill = color
-    saveToStorage(MEMES_DB, gMeme)
 }
 
 const setColorStroke = (color) => {
     gMeme.lines[gMeme.selectedLineIdx].colorStroke = color
-    saveToStorage(MEMES_DB, gMeme)
 }
 
 const setFont = (font) => {
     gMeme.lines[gMeme.selectedLineIdx].font = font
-    saveToStorage(MEMES_DB, gMeme)
 }
 
 const setFontSize = (size) => {
     gMeme.lines[gMeme.selectedLineIdx].fontSize += size
-    saveToStorage(MEMES_DB, gMeme)
 }
 
 const setPosX = (size) => {
     gMeme.lines[gMeme.selectedLineIdx].pos.x += size
-    saveToStorage(MEMES_DB, gMeme)
 }
 
 const setPosY = (size) => {
     gMeme.lines[gMeme.selectedLineIdx].pos.y += size
-    saveToStorage(MEMES_DB, gMeme)
 }
 
-const setSelectedImage = imgId => { gMeme.selectedImgId = imgId }
-
-const getSelectedImage = () => { return gMeme.selectedImgId }
 
 const deleteLine = () => {
     gMeme.lines.splice(gMeme.selectedLineIdx, 1)
     switchLine()
-    saveToStorage(MEMES_DB, gMeme)
 }
 
 const setAlign = side => {
@@ -97,15 +97,14 @@ const setAlign = side => {
         default:
             break;
     }
-    saveToStorage(MEMES_DB, gMeme)
 }
 
-const clearText = () => {
-    gMeme.lines = []
-    createLine()
-    gMeme.selectedLineIdx = 0
-    saveToStorage(MEMES_DB, gMeme)
-}
+// const clearText = () => {
+//     /*maybe id*/
+//     gMeme.lines = []
+//     createLine()
+//     gMeme.selectedLineIdx = 0
+// }
 
 
 
