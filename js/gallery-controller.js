@@ -1,11 +1,13 @@
 'use strict';
 let gMoreState = false;
 
-const onGallery= () =>{
+const onGallery = () => {
     setFilterBy('')
     toggleCanvas('none')
     toggleGallery('grid')
     toggleSearch('flex')
+    toggleAbout('none')
+    document.querySelector('.categorys').value = '';
     isDownload = false
 }
 
@@ -26,6 +28,11 @@ const toggleGallery = state => {
 const toggleSearch = state => {
     const display = (state === 'none') ? 'none' : 'flex'
     document.querySelector('.search-container').style.display = display
+}
+
+const toggleAbout = state => {
+    const display = (state === 'none') ? 'none' : 'flex'
+    document.querySelector('.about').style.display = display
 }
 
 const addEventListenersGallery = () => {
@@ -58,7 +65,7 @@ const renderKeywords = () => {
         strHTML += `<button onclick="onClickWords(this)" class="btn-${word}" value="${word}">${word}</button>`
         counter++
     }
-    strHTML+= `<button class="btn-more" onclick="onMore()">${(gMoreState) ? 'Less':'More'}</button>`
+    strHTML += `<button class="btn-more" onclick="onMore()">${(gMoreState) ? 'Less' : 'More'}</button>`
     document.querySelector('.search-btns').innerHTML = strHTML
 }
 
@@ -74,9 +81,17 @@ const onImage = imgId => {
     toggleCanvas('block')
     toggleGallery('none')
     toggleSearch('none')
+    toggleAbout('none')
     renderCanvas()
 }
 
 const toggleMenu = () => {
     document.body.classList.toggle('menu-open');
+}
+
+const onAbout = () => {
+    toggleCanvas('none')
+    toggleGallery('none')
+    toggleSearch('none')
+    toggleAbout('flex')
 }

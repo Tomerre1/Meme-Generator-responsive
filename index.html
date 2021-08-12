@@ -27,7 +27,7 @@
     </header>
 
     <section class="search-container flex align-center">
-        <div>
+        <div class="search-bar">
             <input type="text" class="categorys" list="categorys" placeholder="Enter search keyword ">
             <img class="search-icon" src="icons/search-icon.png" />
         </div>
@@ -66,12 +66,12 @@
                 </select>
                 <img src="icons/trash.png" class="icons btn-delete" onclick="onDeleteLine()" />
                 <input type="text" class="meme-txt" name="meme-txt" placeholder="Enter Text" />
-                
+
                 <label for="color-stroke" class="btn-color-stroke">
                     <img src="icons/paint-board-and-brush.png" class="icons">
                 </label>
                 <input value="#000000" id="color-stroke" name="color-stroke" type="color"
-                    onchange="onSetColorStroke(this.value)" hidden/>
+                    onchange="onSetColorStroke(this.value)" hidden />
 
                 <label for="color-fill" class="btn-color-fill">
                     <img src="icons/text stroke.png" class="icons">
@@ -99,10 +99,29 @@
 
     </section>
 
+    <section class="about flex align-center main-layout space-between">
+        <div class="team-member flex">
+            <img class="mx-auto rounded-circle profile-picture" src="img/me.jpg" alt="">
+            <h4>Tomer Revah</h4>
+            <p class="text-muted">Software Enginner</p>
+            <ul class="social-nav clean-list flex justify-content">
+                <a target="_blank" href="https://www.facebook.com/tomer.revah"><i class="fab fa-facebook-f"></i></a>
+                <a target="_blank" href="https://www.instagram.com/tomer__revah/?fbclid=IwAR3IyGw46KpvPeMtUgQbHxg4616KgyCU6jhpzlzMYwMnuVgpqts6-Wx_mBA"><i class="fab fa-instagram"></i></a>
+                <a target="_blank" href="https://api.whatsapp.com/send?phone=+9720503031330"><i class="fa fa-whatsapp fa-2x"></i></a>
+                <a target="_blank" href="https://il.linkedin.com/in/tomer-revah-software-engineering"><i class="fa fa-linkedin fa-2x"></i></a>
+              </ul>
+        </div>
+
+        <p class="about-description">
+            Hello! , My name is Tomer Revah and im software engineering student at 4th year.
+            I'm a student at Coding Academy also and i'm on the highway to become a fullstack developer.
+        </p>
+
+    </section>
+
     <footer class="flex align-center">
         <img class="logo" src="img/logo.png" alt="">
         <p>All rights reserved to Tomer Revah </p>
-
     </footer>
 
     <script src="js/storage-service.js"></script>
