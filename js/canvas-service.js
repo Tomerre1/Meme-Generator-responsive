@@ -6,6 +6,7 @@ let gMeme = {
     lines: []
 }
 
+
 const createLine = (text = '', font = 'Impact', colorFill = '#ffffff',
     colorStroke = '#000000', fontSize = 30, align = 'left') => {
     const memeTxt = {
@@ -22,8 +23,6 @@ const createLine = (text = '', font = 'Impact', colorFill = '#ffffff',
     saveToStorage(MEMES_DB, gMeme)
 }
 
-const getTexts = () => { return loadFromStorage(MEMES_DB) }
-
 const setTexts = txt => {
     if (!gMeme.lines.length) {
         setSelectedLineIdx(-1)
@@ -33,7 +32,7 @@ const setTexts = txt => {
     saveToStorage(MEMES_DB, gMeme)
 }
 
-const getMeme = () => { return gMeme; }
+const getMeme = () => { return loadFromStorage(MEMES_DB) }
 
 const setSelectedLineIdx = ind => { gMeme.selectedLineIdx = ind }
 

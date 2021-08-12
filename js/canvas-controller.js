@@ -30,22 +30,16 @@ const resizeCanvas = () => {
     renderCanvas()
 }
 
-const drawText = (txt) => {
+const drawText = (txt,selectedInd) => {
     gCtx.lineWidth = 2
     gCtx.strokeStyle = txt.colorStroke;
     gCtx.fillStyle = txt.colorFill;
     gCtx.font = txt.fontSize + 'px ' + txt.font;
     gCtx.fillText(txt.text, txt.pos.x, txt.pos.y)
     gCtx.strokeText(txt.text, txt.pos.x, txt.pos.y)
+    if(!isDownload && selectedInd === getSelectedLine()) drawRect(txt.pos.x, txt.pos.y, gCtx.measureText(txt.text).width, txt.fontSize)
+    gCtx.save()
 
-    // let line = getMeme().lines[getSelectedLine()]
-  
-    // let x = line.pos.x
-    // let y = line.pos.y
-    // let textLength = line.width
-    // let textHeight = line.fontSize
-    // gCtx.measureText(line.text).width
-    // drawRect(x, y, textLength, textHeight)
 }
 
 const renderCanvas = () => {
@@ -53,21 +47,9 @@ const renderCanvas = () => {
     gImg.src = `img/${getSelectedImage()}.jpg`
     gImg.onload = () => {
         gCtx.drawImage(gImg, 0, 0, gCanvas.width, gCanvas.height)
-        getMeme().lines.forEach(txt => {
-            drawText(txt)
+        getMeme().lines.forEach((txt,ind) => {
+            drawText(txt,ind)
         })
-        if (getMeme().lines.length) {
-            let line = getMeme().lines[getSelectedLine()]
-            console.log(line);
-            let x = line.pos.x
-            let y = line.pos.y
-            let textLength = gCtx.measureText(line.txt).width
-            let textHeight = line.fontSize
-            // const { x, y, textLength, textHeight } = getCurrentLineMeasures()
-            if (!isDownload) {
-                drawRect(x, y, textLength, textHeight)
-            }
-        }
     }
 
 }
@@ -163,7 +145,7 @@ const renderLinePrefs = () => {
 
 const downloadCanvas = (elLink) => {
     isDownload = true
-    renderCanvas();
+    renderCanvas()
     const data = gCanvas.toDataURL()
     elLink.href = data
 }
