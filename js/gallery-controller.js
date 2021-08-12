@@ -2,9 +2,11 @@
 let gMoreState = false;
 
 const onGallery= () =>{
+    setFilterBy('')
     toggleCanvas('none')
     toggleGallery('grid')
     toggleSearch('flex')
+    toggleMenu()
 }
 
 const renderGallery = () => {
@@ -52,7 +54,7 @@ const renderKeywords = () => {
     let strHTML = ''
     let counter = 0
     for (let word in keywords) {
-        if (!gMoreState && counter === 5) break;
+        if (!gMoreState && counter === 4) break;
         strHTML += `<button onclick="onClickWords(this)" class="btn-${word}" value="${word}">${word}</button>`
         counter++
     }
@@ -72,4 +74,8 @@ const onImage = imgId => {
     toggleGallery('none')
     toggleSearch('none')
     renderCanvas()
+}
+
+const toggleMenu = () => {
+    document.body.classList.toggle('menu-open');
 }

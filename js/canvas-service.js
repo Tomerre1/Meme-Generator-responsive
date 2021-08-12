@@ -33,7 +33,7 @@ const setTexts = txt => {
     saveToStorage(MEMES_DB, gMeme)
 }
 
-const getMeme = () => { return loadFromStorage(MEMES_DB) }
+const getMeme = () => { return gMeme; }
 
 const setSelectedLineIdx = ind => { gMeme.selectedLineIdx = ind }
 
@@ -108,7 +108,7 @@ const clearText = () => {
 }
 
 const getCurrentLineMeasures = () => {
-    console.log(gMeme.lines[getSelectedLine()].pos.x, gMeme.lines[getSelectedLine()].pos.y, gCtx.measureText(gMeme.lines[getSelectedLine()].text).width, gMeme.lines[getSelectedLine()].fontSize);
+    console.log(gMeme.selectedLineIdx)
     return {
         x: gMeme.lines[getSelectedLine()].pos.x,
         y: gMeme.lines[getSelectedLine()].pos.y,

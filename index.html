@@ -10,6 +10,7 @@
 </head>
 
 <body onload="init()">
+    <div class="screen" onclick="toggleMenu()"></div>
     <header>
         <div class="gallery-header flex align-center space-between">
             <img class="logo" src="img/logo.png" alt="" onclick="onGallery()">
@@ -18,20 +19,17 @@
                     <li><a onclick="onGallery()">Gallery</a></li>
                     <li><a onclick="onMemes()">Memes</a></li>
                     <li><a onclick="onAbout()">About</a></li>
-                    <!-- <li><select>
-                        <option>English</option>
-                        <option>Hebrew</option>
-                    </select> -->
                     </li>
                 </ul>
+                <button class="btn-menu-toggle" onclick="toggleMenu()">☰</button>
             </nav>
         </div>
     </header>
 
-    <section class="search-container flex space-around align-center">
+    <section class="search-container flex align-center">
         <div>
             <input type="text" class="categorys" list="categorys" placeholder="Enter search keyword ">
-            <img class="search-icon" src="icons/search-icon.png"/>
+            <img class="search-icon" src="icons/search-icon.png" />
         </div>
         <datalist id="categorys">
             <option value="Happy"></option>

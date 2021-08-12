@@ -3,7 +3,7 @@ let gCanvas
 let gCtx
 let gInput
 let gImg
-let isDownload = false;
+let isDownload = false
 
 const init = () => {
     gCanvas = document.getElementById('my-canvas')
@@ -18,11 +18,15 @@ const addEventListeners = () => {
     gInput = document.querySelector('[name=meme-txt]')
     gInput.addEventListener('input', onText)
     addEventListenersGallery()
+    window.addEventListener('resize', resizeCanvas)
 }
 
-const onText = () => {
-    setTexts(gInput.value)
-    clearCanvas()
+const resizeCanvas = () => {
+    const elContainer = document.querySelector('.canvas-container');
+    if (500 < elContainer.offsetWidth) return
+    const min = Math.min(elContainer.offsetWidth, elContainer.offsetHeight)
+    gCanvas.width = min;
+    gCanvas.height = min;
     renderCanvas()
 }
 
@@ -33,8 +37,47 @@ const drawText = (txt) => {
     gCtx.font = txt.fontSize + 'px ' + txt.font;
     gCtx.fillText(txt.text, txt.pos.x, txt.pos.y)
     gCtx.strokeText(txt.text, txt.pos.x, txt.pos.y)
-    gCtx.save()
+
+    // let line = getMeme().lines[getSelectedLine()]
+  
+    // let x = line.pos.x
+    // let y = line.pos.y
+    // let textLength = line.width
+    // let textHeight = line.fontSize
+    // gCtx.measureText(line.text).width
+    // drawRect(x, y, textLength, textHeight)
 }
+
+const renderCanvas = () => {
+    gImg = new Image();
+    gImg.src = `img/${getSelectedImage()}.jpg`
+    gImg.onload = () => {
+        gCtx.drawImage(gImg, 0, 0, gCanvas.width, gCanvas.height)
+        getMeme().lines.forEach(txt => {
+            drawText(txt)
+        })
+        if (getMeme().lines.length) {
+            let line = getMeme().lines[getSelectedLine()]
+            console.log(line);
+            let x = line.pos.x
+            let y = line.pos.y
+            let textLength = gCtx.measureText(line.txt).width
+            let textHeight = line.fontSize
+            // const { x, y, textLength, textHeight } = getCurrentLineMeasures()
+            if (!isDownload) {
+                drawRect(x, y, textLength, textHeight)
+            }
+        }
+    }
+
+}
+
+const onText = () => {
+    setTexts(gInput.value)
+    clearCanvas()
+    renderCanvas()
+}
+
 
 const onSetColorFill = (color) => {
     setColorFill(color)
@@ -116,34 +159,13 @@ const renderLinePrefs = () => {
     document.querySelector(`.meme-font [value="${line.font}"]`).selected = true;
 }
 
-const renderCanvas = () => {
-    gImg = new Image();
-    gImg.src = `img/${getSelectedImage()}.jpg`
-    gCanvas.width = gImg.width;
-    gCanvas.height = gImg.height;
-    console.log(gImg.width, gImg.height);
-    gImg.onload = () => {
-        gCtx.drawImage(gImg, 0, 0, gCanvas.width, gCanvas.height)
-        getMeme().lines.forEach(txt => {
-            drawText(txt)
-        })
-        if (getMeme().lines.length) {
-            const { x, y, textLength, textHeight } = getCurrentLineMeasures()
-            if (!isDownload) {
-                drawRect(x, y, textLength, textHeight)
-            }
-        }
-    }
 
-}
 
 const downloadCanvas = (elLink) => {
     isDownload = true
     renderCanvas();
     const data = gCanvas.toDataURL()
     elLink.href = data
-
-
 }
 
 const onChangeFont = (font) => {
@@ -167,6 +189,6 @@ const onAlign = side => {
 const drawRect = (x, y, textLength, txtHeight) => {
     gCtx.beginPath()
     gCtx.rect(x, y - txtHeight * 0.9, textLength * 1.05, txtHeight)
-    gCtx.strokeStyle = 'blue'
+    gCtx.strokeStyle = 'gray'
     gCtx.stroke()
 }
