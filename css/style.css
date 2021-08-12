@@ -28,7 +28,7 @@ a:hover {
 /* LAYOUTS */
 
 .main-layout {
-  max-width: 750px;/*dekstop */
+  max-width: 750px;
   margin: 0 auto;
 }
 
@@ -104,7 +104,7 @@ nav {
 /* SEARCH */
 .search-container {
   background-color: #fff;
-  flex-direction: column; /*row to desktop*/
+  flex-direction: column; 
 }
 
 .search-btns > button {
@@ -264,6 +264,7 @@ canvas {
   padding: 10px;
 }
 
+
 .btn-color-stroke {
   grid-area: color-stroke;
 }
@@ -335,6 +336,10 @@ canvas {
   background-color: #fff;
   cursor: pointer;
   object-fit: cover;
+}
+
+.icons:hover{
+  background-color: #ff7f00;
 }
 
 /* FOOTER */

@@ -66,10 +66,19 @@
                 </select>
                 <img src="icons/trash.png" class="icons btn-delete" onclick="onDeleteLine()" />
                 <input type="text" class="meme-txt" name="meme-txt" placeholder="Enter Text" />
-                <input value="#000000" class="icons btn-color-stroke" name="color-stroke" type="color"
-                    onchange="onSetColorStroke(this.value)" />
-                <input type="color" class="icons btn-color-fill" name="color-fill" onchange="onSetColorFill(this.value)"
-                    value="#ffffff" />
+                
+                <label for="color-stroke" class="btn-color-stroke">
+                    <img src="icons/paint-board-and-brush.png" class="icons">
+                </label>
+                <input value="#000000" id="color-stroke" name="color-stroke" type="color"
+                    onchange="onSetColorStroke(this.value)" hidden/>
+
+                <label for="color-fill" class="btn-color-fill">
+                    <img src="icons/text stroke.png" class="icons">
+                </label>
+                <input type="color" id="color-fill" name="color-fill" onchange="onSetColorFill(this.value)"
+                    value="#ffffff" hidden />
+
                 <img src="icons/increase font - icon.png" class="icons btn-plus" onclick="onPlus()" />
                 <img src="icons/decrease font - icon.png" class="icons btn-minus" onclick="onMinus()" />
                 <img src="icons/arrow-up-solid.svg" class="icons btn-up" onclick="onUp()" />
@@ -87,6 +96,7 @@
                 <a href="#" class="btns-meme btn-share">Share</a>
             </div>
         </div>
+
     </section>
 
     <footer class="flex align-center">

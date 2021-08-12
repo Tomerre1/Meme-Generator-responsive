@@ -125,6 +125,7 @@ const onAddLine = () => {
     setSelectedLineIdx(getMeme().lines.length - 1)
     createLine()
     document.querySelector('[name=meme-txt]').value = ''
+    setTexts('')
 }
 
 const onSwitchLine = () => {

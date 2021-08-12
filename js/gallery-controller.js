@@ -6,7 +6,7 @@ const onGallery= () =>{
     toggleCanvas('none')
     toggleGallery('grid')
     toggleSearch('flex')
-    toggleMenu()
+    isDownload = false
 }
 
 const renderGallery = () => {
@@ -69,6 +69,7 @@ const onMore = () => {
 
 const onImage = imgId => {
     clearText()
+    document.querySelector('[name=meme-txt]').value = ''
     setSelectedImage(+imgId)
     toggleCanvas('block')
     toggleGallery('none')

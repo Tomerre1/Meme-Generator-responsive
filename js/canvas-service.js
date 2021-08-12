@@ -102,17 +102,10 @@ const setAlign = side => {
 
 const clearText = () => {
     gMeme.lines = []
-    gMeme.selectedLineIdx = -1
+    createLine()
+    gMeme.selectedLineIdx = 0
     saveToStorage(MEMES_DB, gMeme)
 }
 
-const getCurrentLineMeasures = () => {
-    console.log(gMeme.selectedLineIdx)
-    return {
-        x: gMeme.lines[getSelectedLine()].pos.x,
-        y: gMeme.lines[getSelectedLine()].pos.y,
-        textLength: gCtx.measureText(gMeme.lines[getSelectedLine()].text).width,
-        textHeight: gMeme.lines[getSelectedLine()].fontSize
-    }
-}
+
 
