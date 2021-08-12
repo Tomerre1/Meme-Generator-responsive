@@ -27,14 +27,33 @@
             </nav>
         </div>
     </header>
+    <section>
+        <input type="text" class="categorys" list="categorys">
+        <datalist id="categorys">
+            <option value="Happy"></option>
+            <option value="Trump"></option>
+            <option value="Pets"></option>
+            <option value="Sleep"></option>
+            <option value="Children"></option>
+            <option value="Suprising"></option>
+            <option value="Love"></option>
+            <option value="Pointing"></option>
+            <option value="Friends"></option>
+            <option value="Winner"></option>
+            <option value="Smart"></option>
+            <option value="Cool"></option>
+            <option value="Zero"></option>
+            <option value="Putin"></option>
+        </datalist>
+    </section>
 
     <main>
         <div class="gallery-container grid main-layout main-layout"></div>
     </main>
 
     <section class="meme-container">
-        <div class="canvas-container main-layout flex">
-            <canvas id="my-canvas" height="450" width="450"></canvas>
+        <div class="canvas-container main-layout flex justify-content align-center">
+            <canvas id="my-canvas" height="500" width="500"></canvas>
 
             <div class="meme-buttons grid">
                 <select class="meme-font" onchange="onChangeFont(this.value)">
@@ -44,23 +63,28 @@
                     <option value="Arial">Arial</option>
                     <option value="san-sarif">San-Sarif</option>
                 </select>
-                <button onclick="onDeleteLine()"><img src="icons/trash.png" class="icons"/></button>
+                <img src="icons/trash.png" class="icons btn-delete" onclick="onDeleteLine()" />
                 <input type="text" class="meme-txt" name="meme-txt" placeholder="Enter Text" />
-                <input value="#000000" name="color-stroke" type="color" onchange="onSetColorStroke(this.value)" />
-                <input type="color" name="color-fill" onchange="onSetColorFill(this.value)" value="#ffffff" />
-                <button onclick="onPlus()"><img src="icons/increase font - icon.png" class="icons"/></button>
-                <button onclick="onMinus()"><img src="icons/decrease font - icon.png" class="icons"/></button>
-                <button onclick="onUp()"><img src="icons/arrow-up-solid.svg" class="icons"/></button>
-                <button onclick="onDown()"><img src="icons/arrow-down-solid.svg" class="icons"/></button>
-                <button onclick="onRight()"><img src="icons/arrow-right-solid.svg" class="icons"/></button>
-                <button onclick="onLeft()"><img src="icons/arrow-left-solid.svg" class="icons"/></button>
-                <button onclick="onAddLine()"><img src="icons/add.png" class="icons"/></button>
-                <button onclick="onSwitchLine()"><img src="icons/up-and-down-opposite-double-arrows-side-by-side.png" class="icons"/></button>
-                <button onclick="onAlign('left')"><img src="icons/align-to-left.png" class="icons"/></button>
-                <button onclick="onAlign('center')"><img src="icons/center-text-alignment.png" class="icons"/></button>
-                <button onclick="onAlign('right')"><img src="icons/align-to-right.png" class="icons"/></button>
+                <input value="#000000" class="icons btn-color-stroke" name="color-stroke" type="color"
+                    onchange="onSetColorStroke(this.value)" />
+                <input type="color" class="icons btn-color-fill" name="color-fill" onchange="onSetColorFill(this.value)"
+                    value="#ffffff" />
+                <img src="icons/increase font - icon.png" class="icons btn-plus" onclick="onPlus()" />
+                <img src="icons/decrease font - icon.png" class="icons btn-minus" onclick="onMinus()" />
+                <img src="icons/arrow-up-solid.svg" class="icons btn-up" onclick="onUp()" />
+                <img src="icons/arrow-down-solid.svg" class="icons btn-down" onclick="onDown()" />
+                <img src="icons/arrow-right-solid.svg" class="icons btn-right" onclick="onRight()" />
+                <img src="icons/arrow-left-solid.svg" class="icons btn-left" onclick="onLeft()" />
+                <img src="icons/add.png" class="icons btn-addLine" onclick="onAddLine()" />
+                <img src="icons/up-and-down-opposite-double-arrows-side-by-side.png" class="icons btn-switch"
+                    onclick="onSwitchLine()" />
+                <img src="icons/align-to-left.png" class="icons btn-align-left" onclick="onAlign('left')" />
+                <img src="icons/center-text-alignment.png" class="icons btn-align-center" onclick="onAlign('center')" />
+                <img src="icons/align-to-right.png" class="icons btn-align-right" onclick="onAlign('right')" />
+                <img src="icons/save-solid.svg" class="icons btn-save" />
+                <a href="#" onclick="downloadCanvas(this)" class="btns-meme btn-download" download="myMeme">Download</a>
+                <a href="#" class="btns-meme btn-share">Share</a>
             </div>
-            <a href="#" onclick="downloadCanvas(this)" download="myMeme">Download</a>
         </div>
     </section>
     <script src="js/storage-service.js"></script>

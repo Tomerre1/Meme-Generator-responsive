@@ -16,6 +16,7 @@ const init = () => {
 const addEventListeners = () => {
     gInput = document.querySelector('[name=meme-txt]')
     gInput.addEventListener('input', onText)
+    addEventListenersGallery()
 }
 
 const onText = () => {
@@ -120,6 +121,9 @@ const renderLinePrefs = () => {
 const renderCanvas = () => {
     gImg = new Image();
     gImg.src = `img/${getSelectedImage()}.jpg`
+    gCanvas.width = gImg.width;
+    gCanvas.height = gImg.height;
+    console.log(gImg.width, gImg.height);
     gImg.onload = () => {
         gCtx.drawImage(gImg, 0, 0, gCanvas.width, gCanvas.height)
         getMeme().lines.forEach(txt => {
@@ -142,7 +146,7 @@ const downloadCanvas = (elLink) => {
     const data = gCanvas.toDataURL()
     elLink.href = data
 
-   
+
 }
 
 
@@ -160,7 +164,7 @@ const toggleCanvas = (state) => {
 const onImage = imgId => {
     clearText()
     setSelectedImage(+imgId)
-    toggleCanvas('block') 
+    toggleCanvas('block')
     toggleGallery('none')
     renderCanvas()
 }

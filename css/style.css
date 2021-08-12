@@ -13,10 +13,16 @@ body {
   font-family: Montserrat, "Impact", "sans-serif", "monospace";
   margin: 0;
   padding: 0;
+  background-color: #e3e3e3;
   height: 100vh;
 }
 
 /* BASE */
+
+a,
+a:hover {
+  text-decoration: none;
+}
 
 /* LAYOUTS */
 
@@ -44,7 +50,7 @@ body {
 }
 
 .flex.justify-content {
-  align-items: center;
+  justify-content: center;
 }
 
 .clean-list {
@@ -54,7 +60,7 @@ body {
 }
 
 /* HEADER */
-header{
+header {
   background-color: #ff7f00;
 }
 
@@ -84,10 +90,6 @@ header{
 }
 
 /* GALLERY */
-
-main {
-  background-color: #e3e3e3;
-}
 .gallery-container {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   justify-items: center;
@@ -96,7 +98,7 @@ main {
 }
 
 .gallery-frame {
-  padding: .5rem;
+  padding: 0.5rem;
   font-size: 1.2rem;
   text-align: center;
   background-color: #333;
@@ -112,25 +114,129 @@ main {
 }
 
 .gallery-image:hover {
-  opacity: .75;
+  opacity: 0.75;
 }
 
 /* CANVAS */
 
-.meme-container{
-  background-color: #e3e3e3;
-  display:none;
+.meme-container {
+  display: none;
+  margin: 0 auto;
+}
+.canvas-container {
+  gap: 50px;
 }
 canvas {
   display: block;
-  margin: 0 auto;
+
   outline: 1px solid black;
   background-color: white;
 }
 
-/* ICONS */
-.icons{
-  width: 25px;
-  height: 25px;
+/* CANVAS - BUTTONS */
+.meme-buttons {
+  grid-template: repeat(6, 1fr) / repeat(5, 1fr);
+  grid-gap: 10px;
+  grid-template-areas:
+    "txt txt txt txt txt"
+    ". switch addLine delete ."
+    "plus minus align-left align-center align-right"
+    "font font font up right"
+    "save color-fill color-stroke down left "
+    "download download . share share";
 }
 
+.btn-save {
+  grid-area: save;
+}
+
+.btn-share {
+  grid-area: share;
+}
+.btn-download {
+  grid-area: download;
+}
+.btns-meme {
+  color: white;
+  height: 40px;
+  border-radius: 6px;
+  background-color: #ff7f00;
+  text-align: center;
+  padding: 10px;
+}
+
+.btn-color-stroke {
+  grid-area: color-stroke;
+}
+
+.btn-color-fill {
+  grid-area: color-fill;
+}
+
+.meme-txt {
+  grid-area: txt;
+  border-radius: 10px;
+}
+.meme-font {
+  grid-area: font;
+  border-radius: 10px;
+}
+
+.btn-delete {
+  grid-area: delete;
+}
+
+.btn-plus {
+  grid-area: plus;
+}
+.btn-minus {
+  grid-area: minus;
+}
+
+.btn-up {
+  grid-area: up;
+}
+
+.btn-down {
+  grid-area: down;
+}
+
+.btn-right {
+  grid-area: right;
+}
+
+.btn-left {
+  grid-area: left;
+}
+
+.btn-addLine {
+  grid-area: addLine;
+}
+
+.btn-switch {
+  grid-area: switch;
+}
+
+.btn-align-left {
+  grid-area: align-left;
+}
+.btn-align-center {
+  grid-area: align-center;
+}
+.btn-align-right {
+  grid-area: align-right;
+}
+
+/* ICONS */
+.icons {
+  width: 50px;
+  height: 50px;
+  margin: 0;
+  padding: 5.5px 5px 5px 5.5px;
+  border-radius: 8px;
+  background-color: #fff;
+  cursor: pointer;
+  object-fit: cover;
+}
+
+/**/
