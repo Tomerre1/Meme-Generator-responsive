@@ -1,5 +1,20 @@
-
+'use strict';
 let filterBy = '';
+let gKeywords = {
+    Happy: 24,
+    Trump: 14,
+    Pets: 18,
+    Sleep: 10,
+    Children: 24,
+    Suprising: 40,
+    Love: 10,
+    Pointing: 14,
+    Winner: 20,
+    Smart: 13,
+    Cool: 19,
+    Zero: 10,
+    Putin: 16
+}
 const gImgs = [
     { id: 1, url: 'img/1.jpg', keywords: ['Happy', 'Trump'] },
     { id: 2, url: 'img/2.jpg', keywords: ['Pets', 'Love'] },
@@ -17,7 +32,7 @@ const gImgs = [
     { id: 14, url: 'img/14.jpg', keywords: ['Cool'] },
     { id: 15, url: 'img/15.jpg', keywords: ['Zero'] },
     { id: 16, url: 'img/16.jpg', keywords: ['Happy'] },
-    { id: 17, url: 'img/17.jpg', keywords: ['Putin','Pointing'] },
+    { id: 17, url: 'img/17.jpg', keywords: ['Putin', 'Pointing'] },
     { id: 18, url: 'img/18.jpg', keywords: ['Happy'] },
 ];
 
@@ -25,11 +40,12 @@ const getImgs = () => {
     return gImgs
 }
 
+const getKeywords = () => { return gKeywords }
+
 const setFilterBy = filter => {
     filterBy = filter
     renderGallery()
 }
-
 
 const filterInput = () => {
     if (!filterBy) return gImgs

@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-family: Montserrat, "Impact", "sans-serif", "monospace";
 }
 /* FONTS */
 
@@ -10,7 +11,6 @@
 
 body {
   font-size: 1rem;
-  font-family: Montserrat, "Impact", "sans-serif", "monospace";
   margin: 0;
   padding: 0;
   background-color: #e3e3e3;
@@ -45,6 +45,10 @@ a:hover {
   justify-content: space-between;
 }
 
+.flex.space-around {
+  justify-content: space-around;
+}
+
 .flex.align-center {
   align-items: center;
 }
@@ -66,10 +70,14 @@ header {
 
 .logo {
   width: 8.32rem;
-  padding-inline-start: 1rem;
+  margin-inline-start: 2rem;
 }
 
 /*HEADER NAV*/
+
+nav {
+  margin-inline-end: 2rem;
+}
 .header-nav > li {
   cursor: pointer;
 }
@@ -82,19 +90,103 @@ header {
   justify-content: center;
   align-items: center;
   flex: 1;
-  transition: box-shadow 0.8s;
+  transition: all 0.8s;
 }
 
 .header-nav > li:hover > a {
   box-shadow: inset 0 -3px 0 #040a2c;
+  color: black;
+}
+
+/* SEARCH */
+.search-container {
+  background-color: #fff;
+}
+
+.search-btns > button {
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+  height: 100px;
+  transition: color 0.4s;
+}
+
+.search-btns > button:hover {
+  color: #ff7f00;
+}
+
+.search-icon {
+  width: 18px;
+  position: absolute;
+}
+
+.btn-Happy {
+  font-size: 24px;
+}
+
+.btn-Trump {
+  font-size: 14px;
+}
+
+.btn-Pets {
+  font-size: 18px;
+}
+
+.btn-Sleep {
+  font-size: 10px;
+}
+
+.btn-Children {
+  font-size: 24px;
+}
+
+.btn-Suprising {
+  font-size: 40px;
+}
+
+.btn-Pointing {
+  font-size: 14px;
+}
+.btn-Winner {
+  font-size: 20px;
+}
+.btn-Smart {
+  font-size: 13px;
+}
+.btn-Cool {
+  font-size: 19px;
+}
+.btn-Zero {
+  font-size: 10px;
+}
+
+.btn-more{
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  margin:0;
+  padding:0;
+  font-size:13px;
+  padding-top:9px;
+  text-decoration: underline;
+}
+
+input[list] {
+  border: 0;
+  outline: 0;
+  border-bottom: 2px solid #040a2c;
+  font-size: 18px;
+  background-color: transparent;
 }
 
 /* GALLERY */
+
 .gallery-container {
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   justify-items: center;
   margin: 0 auto;
   grid-gap: 1.5rem;
+  padding: 20px 0;
 }
 
 .gallery-frame {
@@ -122,6 +214,7 @@ header {
 .meme-container {
   display: none;
   margin: 0 auto;
+  padding: 20px 0;
 }
 .canvas-container {
   gap: 50px;
@@ -226,8 +319,7 @@ canvas {
 .btn-align-right {
   grid-area: align-right;
 }
-
-/* ICONS */
+/* CANVAS ICONS */
 .icons {
   width: 50px;
   height: 50px;
@@ -239,4 +331,12 @@ canvas {
   object-fit: cover;
 }
 
-/**/
+/* FOOTER */
+footer{
+  background-color: #ff7f00;  
+  flex-direction: column;
+}
+
+footer > .logo{
+  padding-block-start:20px;
+}

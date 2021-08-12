@@ -6,8 +6,6 @@ let gMeme = {
     lines: []
 }
 
-
-
 const createLine = (text = '', font = 'Impact', colorFill = '#ffffff',
     colorStroke = '#000000', fontSize = 30, align = 'left') => {
     const memeTxt = {
@@ -23,7 +21,6 @@ const createLine = (text = '', font = 'Impact', colorFill = '#ffffff',
     gMeme.selectedLineIdx++;
     saveToStorage(MEMES_DB, gMeme)
 }
-
 
 const getTexts = () => { return loadFromStorage(MEMES_DB) }
 
@@ -86,7 +83,6 @@ const deleteLine = () => {
     saveToStorage(MEMES_DB, gMeme)
 }
 
-//fix align לא מדויק
 const setAlign = side => {
     let textLength = gCtx.measureText(gMeme.lines[gMeme.selectedLineIdx].text).width
     switch (side) {

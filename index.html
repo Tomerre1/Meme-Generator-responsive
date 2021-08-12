@@ -11,13 +11,13 @@
 
 <body onload="init()">
     <header>
-        <div class="gallery-header flex align-center space-between main-layout">
-            <img class="logo" src="img/logo.png" alt="">
+        <div class="gallery-header flex align-center space-between">
+            <img class="logo" src="img/logo.png" alt="" onclick="onGallery()">
             <nav>
                 <ul class="header-nav clean-list flex space-between">
-                    <li><a>Gallery</a></li>
-                    <li><a>Memes</a></li>
-                    <li><a>About</a></li>
+                    <li><a onclick="onGallery()">Gallery</a></li>
+                    <li><a onclick="onMemes()">Memes</a></li>
+                    <li><a onclick="onAbout()">About</a></li>
                     <!-- <li><select>
                         <option>English</option>
                         <option>Hebrew</option>
@@ -27,8 +27,12 @@
             </nav>
         </div>
     </header>
-    <section>
-        <input type="text" class="categorys" list="categorys">
+
+    <section class="search-container flex space-around align-center">
+        <div>
+            <input type="text" class="categorys" list="categorys" placeholder="Enter search keyword ">
+            <img class="search-icon" src="icons/search-icon.png"/>
+        </div>
         <datalist id="categorys">
             <option value="Happy"></option>
             <option value="Trump"></option>
@@ -38,13 +42,13 @@
             <option value="Suprising"></option>
             <option value="Love"></option>
             <option value="Pointing"></option>
-            <option value="Friends"></option>
             <option value="Winner"></option>
             <option value="Smart"></option>
             <option value="Cool"></option>
             <option value="Zero"></option>
             <option value="Putin"></option>
         </datalist>
+        <div class="search-btns"></div>
     </section>
 
     <main>
@@ -54,7 +58,6 @@
     <section class="meme-container">
         <div class="canvas-container main-layout flex justify-content align-center">
             <canvas id="my-canvas" height="500" width="500"></canvas>
-
             <div class="meme-buttons grid">
                 <select class="meme-font" onchange="onChangeFont(this.value)">
                     <option value="Impact">Impact</option>
@@ -87,6 +90,13 @@
             </div>
         </div>
     </section>
+
+    <footer class="flex align-center">
+        <img class="logo" src="img/logo.png" alt="">
+        <p>All rights reserved to Tomer Revah </p>
+
+    </footer>
+
     <script src="js/storage-service.js"></script>
     <script src="js/gallery-service.js"></script>
     <script src="js/gallery-controller.js"></script>

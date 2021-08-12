@@ -9,6 +9,7 @@ const init = () => {
     gCanvas = document.getElementById('my-canvas')
     gCtx = gCanvas.getContext('2d')
     renderGallery()
+    renderKeywords()
     createLine()
     addEventListeners()
 }
@@ -83,7 +84,6 @@ const onLeft = () => {
     renderCanvas()
 }
 
-
 const clearCanvas = () => {
     gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
 }
@@ -116,8 +116,6 @@ const renderLinePrefs = () => {
     document.querySelector(`.meme-font [value="${line.font}"]`).selected = true;
 }
 
-
-
 const renderCanvas = () => {
     gImg = new Image();
     gImg.src = `img/${getSelectedImage()}.jpg`
@@ -139,7 +137,6 @@ const renderCanvas = () => {
 
 }
 
-
 const downloadCanvas = (elLink) => {
     isDownload = true
     renderCanvas();
@@ -148,7 +145,6 @@ const downloadCanvas = (elLink) => {
 
 
 }
-
 
 const onChangeFont = (font) => {
     setFont(font)
@@ -161,13 +157,6 @@ const toggleCanvas = (state) => {
     document.querySelector('.meme-container').style.display = display
 }
 
-const onImage = imgId => {
-    clearText()
-    setSelectedImage(+imgId)
-    toggleCanvas('block')
-    toggleGallery('none')
-    renderCanvas()
-}
 
 const onAlign = side => {
     setAlign(side)
