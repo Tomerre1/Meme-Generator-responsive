@@ -7,7 +7,8 @@ const onGallery = () => {
     toggleGallery('grid')
     toggleSearch('flex')
     toggleAbout('none')
-
+    removeAllActiveClass()
+    document.querySelector('.gallery-btn').classList.add('active')
     document.querySelector('.categorys').value = '';
     isDownload = false
 }
@@ -23,6 +24,7 @@ const renderGallery = () => {
 }
 
 const toggleGallery = state => {
+    
     const display = (state === 'none') ? 'none' : 'grid'
     document.querySelector('.gallery-container').style.display = display
 }
@@ -32,8 +34,16 @@ const toggleSearch = state => {
 }
 
 const toggleAbout = state => {
+    
     const display = (state === 'none') ? 'none' : 'flex'
     document.querySelector('.about').style.display = display
+}
+
+const removeAllActiveClass = () => {
+    let allNavBtns = document.querySelectorAll('.nav-btn')
+    allNavBtns.forEach(btn => {
+        btn.classList.remove('active')
+    })
 }
 
 const addEventListenersGallery = () => {
@@ -82,6 +92,8 @@ const toggleMenu = () => {
 }
 
 const onAbout = () => {
+    removeAllActiveClass()
+    document.querySelector('.about-btn').classList.add('active')
     toggleCanvas('none')
     toggleGallery('none')
     toggleSearch('none')
@@ -89,7 +101,9 @@ const onAbout = () => {
 }
 
 const onMemes = () => {
-    if(!getSavedMemes()) return
+    removeAllActiveClass()
+    document.querySelector('.memes-btn').classList.add('active')
+    if (!getSavedMemes()) return
     toggleCanvas('none')
     toggleGallery('grid')
     toggleSearch('none')
