@@ -6,7 +6,6 @@ let gMemes = []
 
 
 const initMeme = () => {
-    
     gMeme.selectedImgId = -1
     gMeme.selectedLineIdx = -1
     gMeme.lines = []
@@ -43,6 +42,11 @@ const setTexts = txt => {
 }
 
 const getMeme = () => { return gMeme }
+
+const setMeme = meme => { 
+    gMeme = meme 
+    gMeme.id = makeId()
+}
 
 const setSelectedLineIdx = ind => { gMeme.selectedLineIdx = ind }
 
@@ -97,6 +101,11 @@ const setAlign = side => {
         default:
             break;
     }
+}
+
+const loadMemeById = memeId => {
+    const savedMemes = loadFromStorage(MEMES_DB)
+    return savedMemes.find(meme => meme.id === memeId)
 }
 
 // const clearText = () => {

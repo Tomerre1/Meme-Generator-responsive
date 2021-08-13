@@ -55,7 +55,7 @@
     </main>
 
     <section class="meme-container">
-        <div class="canvas-container main-layout flex justify-content align-center">
+        <div class="canvas-container main-layout flex justify-content align-center ">
             <canvas id="my-canvas" height="500" width="500"></canvas>
             <div class="meme-buttons grid">
                 <select class="meme-font" onchange="onChangeFont(this.value)">
@@ -66,19 +66,25 @@
                     <option value="san-sarif">San-Sarif</option>
                 </select>
                 <img src="icons/trash.png" class="icons btn-delete" onclick="onDeleteLine()" />
+
                 <input type="text" class="meme-txt" name="meme-txt" placeholder="Enter Text" />
+                
+                <div class="btn-color-stroke">
+                    <label for="color-stroke">
+                        <img src="icons/paint-board-and-brush.png" class="icons">
+                    </label>
+                    <input value="#000000" class="color-stroke" id="color-stroke" name="color-stroke" type="color"
+                        onchange="onSetColorStroke(this.value)" />
+                </div>
 
-                <label for="color-stroke" class="btn-color-stroke">
-                    <img src="icons/paint-board-and-brush.png" class="icons">
-                </label>
-                <input value="#000000" id="color-stroke" name="color-stroke" type="color"
-                    onchange="onSetColorStroke(this.value)" hidden />
-
-                <label for="color-fill" class="btn-color-fill">
-                    <img src="icons/text stroke.png" class="icons">
-                </label>
-                <input type="color" id="color-fill" name="color-fill" onchange="onSetColorFill(this.value)"
-                    value="#ffffff" hidden />
+                <div class="btn-color-fill">
+                    <label for="color-fill" >
+                        <img src="icons/text stroke.png" class="icons">
+                    </label>
+                    <input type="color" class="color-fill" id="color-fill" name="color-fill" onchange="onSetColorFill(this.value)"
+                        value="#ffffff" />
+                </div>
+                
 
                 <img src="icons/increase font - icon.png" class="icons btn-plus" onclick="onPlus()" />
                 <img src="icons/decrease font - icon.png" class="icons btn-minus" onclick="onMinus()" />

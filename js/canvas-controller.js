@@ -21,11 +21,13 @@ const addEventListeners = () => {
 }
 
 const resizeCanvas = () => {
-    const elContainer = document.querySelector('.canvas-container');
-    if (500 < elContainer.offsetWidth) return
-    const min = Math.min(elContainer.offsetWidth, elContainer.offsetHeight)
-    gCanvas.width = min;
-    gCanvas.height = min;
+    const elContainer = document.querySelector('.canvas-container')
+    const elMemeContainer = document.querySelector('.meme-container')
+    if (getComputedStyle(elMemeContainer, null).display === 'none') return
+    let ratio = Math.min(elContainer.offsetWidth, elContainer.offsetHeight)
+    if (ratio >= 500) ratio = 500
+    gCanvas.width = ratio
+    gCanvas.height = ratio
     renderCanvas()
 }
 

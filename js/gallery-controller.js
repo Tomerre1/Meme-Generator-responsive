@@ -7,6 +7,7 @@ const onGallery = () => {
     toggleGallery('grid')
     toggleSearch('flex')
     toggleAbout('none')
+
     document.querySelector('.categorys').value = '';
     isDownload = false
 }
@@ -88,6 +89,7 @@ const onAbout = () => {
 }
 
 const onMemes = () => {
+    if(!getSavedMemes()) return
     toggleCanvas('none')
     toggleGallery('grid')
     toggleSearch('none')
@@ -99,24 +101,23 @@ const renderSaveMemes = () => {
     const savedMemes = getSavedMemes()
     const strHTML = savedMemes.map((meme) => {
         return `<div class="gallery-frame">
-                        <img onclick="onSavedMeme(${meme.id})" class="gallery-image" src="${getImageById(meme.selectedImgId).url}">
+                        <img onclick="onSavedMeme('${meme.id}')" class="gallery-image" src="${getImageById(meme.selectedImgId).url}">
                         <div>${getImageById(meme.selectedImgId).keywords.join(' , ')}</div>
                     </div>`
     }).join('')
     document.querySelector('.gallery-container').innerHTML = strHTML
 }
 
-// const onSavedMeme = (memeId) => {
-//     //todo: getmeme by id and fix function to edit meme//
-//     document.querySelector('[name=meme-txt]').value = ''
-//     initMeme()
-//     setSelectedImage(+imgId)
-//     toggleCanvas('block')
-//     toggleGallery('none')
-//     toggleSearch('none')
-//     toggleAbout('none')
-//     renderCanvas()
-// }
+const onSavedMeme = (memeId) => {
+    setMeme(loadMemeById(memeId))
+    setSelectedImage(getMeme().selectedImgId)
+    document.querySelector('[name=meme-txt]').value = getMeme().lines[getSelectedLine()].text
+    toggleCanvas('block')
+    toggleGallery('none')
+    toggleSearch('none')
+    toggleAbout('none')
+    renderCanvas()
+}
 
 const onImage = imgId => {
     document.querySelector('[name=meme-txt]').value = ''

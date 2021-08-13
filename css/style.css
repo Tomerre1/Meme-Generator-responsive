@@ -9,10 +9,6 @@
   font-family: Montserrat;
   src: url(../fonts/Montserrat-Medium.ttf);
 }
-@font-face {
-  font-family: Brands;
-  src: url(../fonts/Awesome/fa-brands-400.ttf);
-}
 
 /* FONT AWSOME */
 @font-face {
@@ -61,7 +57,7 @@ a:hover {
 /* LAYOUTS */
 
 .main-layout {
-  max-width: 750px;
+  max-width: 850px;
   margin: 0 auto;
 }
 
@@ -151,7 +147,7 @@ nav {
   color: #ff7f00;
 }
 
-.search-bar{
+.search-bar {
   position: relative;
 }
 
@@ -160,7 +156,6 @@ nav {
   position: absolute;
   right: 0;
 }
-
 
 .btn-Happy {
   font-size: 24px;
@@ -226,7 +221,7 @@ input[list] {
   position: relative; /*???*/
 }
 
-.gallery-header > img{
+.gallery-header > img {
   cursor: pointer;
 }
 
@@ -288,7 +283,11 @@ canvas {
     "save color-fill color-stroke down left "
     "download download . share share";
 }
-
+.color-stroke,
+.color-fill {
+  position: absolute;
+  visibility: hidden;
+}
 .btn-save {
   grid-area: save;
 }
@@ -494,7 +493,7 @@ body.menu-open .screen {
   line-height: 1.5rem;
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 850px) {
   .header-nav {
     position: fixed;
     left: 0;
@@ -518,7 +517,7 @@ body.menu-open .screen {
   }
 }
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 850px) {
   .main-layout {
     max-width: 980px;
   }
