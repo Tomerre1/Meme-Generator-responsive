@@ -28,7 +28,7 @@ const createLine = (text = '', font = 'Impact', colorFill = '#ffffff',
 }
 
 const saveMeme = () => {
-    gMeme.savedImg = gCanvas.toDataURL()
+    gMeme.savedImg = gCanvas.toDataURL('image/jpeg', 0.5)
     gMemes.push(JSON.parse(JSON.stringify(gMeme)))
     saveToStorage(MEMES_DB, gMemes)
 }

@@ -3,21 +3,12 @@ let gCanvas
 let gCtx
 let gInput
 let gImg
-let isDownload = false
+let gIsDownload = false
 let gStartPos
 const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
-const gStickers = [
-    { sticker: '🧔', id: 0 },
-    { sticker: '👨‍✈️', id: 1 },
-    { sticker: '👩', id: 2 },
-    { sticker: '🥩', id: 3 },
-    { sticker: '🌹', id: 4 },
-    { sticker: '💐', id: 5 },
-    { sticker: '🌰', id: 6 },
-    { sticker: '🥕', id: 7 },
-    { sticker: '🧅', id: 8 }
-]
+const gStickers = ['😎', '😭', '😍', '😂', '🤑', '🥳', '🤫', '🌷', '🤬']
 let gStickerState = { startInd: 0, endInd: 3 }
+
 
 const init = () => {
     gCanvas = document.querySelector('.my-canvas')
@@ -110,7 +101,7 @@ const drawText = (x, y, text, colorStroke, colorFill, fontSize, font, selectedIn
     gCtx.font = fontSize + 'px ' + font;
     gCtx.fillText(text, x, y)
     gCtx.strokeText(text, x, y)
-    if (!isDownload && selectedInd === getSelectedLine()) drawRect(x, y, gCtx.measureText(text).width, fontSize)
+    if (!gIsDownload && selectedInd === getSelectedLine()) drawRect(x, y, gCtx.measureText(text).width, fontSize)
     gCtx.save()
 }
 
@@ -221,14 +212,14 @@ const renderLinePrefs = () => {
 
 
 const downloadCanvas = (elLink) => {
-    isDownload = true
+    gIsDownload = true
     gCtx.drawImage(gImg, 0, 0, gCanvas.width, gCanvas.height)
     getMeme().lines.forEach((txt, ind) => {
         drawText(txt.pos.x, txt.pos.y, txt.text, txt.colorStroke, txt.colorFill, txt.fontSize, txt.font, ind)
     })
-    const data = gCanvas.toDataURL()
+    const data = gCanvas.toDataURL('image/jpeg', 0.5)
     elLink.href = data
-    isDownload = false
+    gIsDownload = false
 }
 
 const onChangeFont = (font) => {
@@ -269,7 +260,7 @@ const renderStickers = () => {
 
     let strHTML = ''
     for (let i = gStickerState.startInd; i < gStickerState.endInd; i++) {
-        strHTML += `<button class="emojis" onclick="onSticker('${gStickers[i].sticker}')">${gStickers[i].sticker}</button>`
+        strHTML += `<button class="emojis" onclick="onSticker('${gStickers[i]}')">${gStickers[i]}</button>`
     }
     document.querySelector('.stickers').innerHTML = strHTML
 

@@ -13,17 +13,19 @@ const onGallery = () => {
 }
 
 const renderGallery = () => {
-    const strHTML = filterInput().map((img) => {
+    let strHTML = (getFilterBy() === '') ? `<div class="gallery-frame"> <img onclick="onUploadPhoto()" class="gallery-image" src="img/upload.jpg"> </div>` : ''
+    strHTML += filterInput().map((img) => {
         return `<div class="gallery-frame">
                     <img onclick="onImage(${img.id})" class="gallery-image" src="${img.url}">
                     <div>${[...img.keywords].join(' , ')}</div>
                 </div>`
     }).join('')
+
     document.querySelector('.gallery-container').innerHTML = strHTML
 }
 
 const toggleGallery = state => {
-    
+
     const display = (state === 'none') ? 'none' : 'grid'
     document.querySelector('.gallery-container').style.display = display
 }
@@ -33,7 +35,7 @@ const toggleSearch = state => {
 }
 
 const toggleAbout = state => {
-    
+
     const display = (state === 'none') ? 'none' : 'flex'
     document.querySelector('.about').style.display = display
 }
@@ -102,10 +104,10 @@ const onAbout = () => {
 const onMemes = () => {
     removeAllActiveClass()
     document.querySelector('.memes-btn').classList.add('active')
-    if (!getSavedMemes()){
+    if (!getSavedMemes()) {
         document.querySelector('.gallery-container').innerHTML = 'Nothing saved here, Go save some memes!  😉'
         return
-    } 
+    }
     toggleCanvas('none')
     toggleGallery('grid')
     toggleSearch('none')

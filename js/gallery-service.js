@@ -1,5 +1,5 @@
 'use strict';
-let filterBy = '';
+let gFilterBy = '';
 let gKeywords = {
     Happy: 24,
     Trump: 14,
@@ -43,17 +43,19 @@ const getImgs = () => {
 const getKeywords = () => { return gKeywords }
 
 const setFilterBy = filter => {
-    filterBy = filter
+    gFilterBy = filter
     renderGallery()
 }
 
+const getFilterBy = () => { return gFilterBy }
+
 const filterInput = () => {
-    if (!filterBy) return gImgs
+    if (!gFilterBy) return gImgs
     return gImgs.filter(img => {
         let categorys = img.keywords.slice()
         categorys.forEach((word, ind) => categorys[ind] = word.toLowerCase())
         const words = categorys.join(',')
-        return (words.includes(filterBy.toLowerCase()))
+        return (words.includes(gFilterBy.toLowerCase()))
     })
 }
 
