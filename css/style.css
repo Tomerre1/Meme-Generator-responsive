@@ -240,6 +240,7 @@ input[list] {
   text-align: center;
   background-color: #333;
   color: #d9d9d9;
+  position: relative;
 }
 
 .gallery-image {
@@ -252,6 +253,18 @@ input[list] {
 
 .gallery-image:hover {
   opacity: 0.75;
+}
+
+/* SAVED MEMES */
+.delete-saved{
+  padding-block-end: 50px;
+  position: absolute;
+  right:0;
+  top:0;
+  font-size: 50px;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 /* CANVAS */

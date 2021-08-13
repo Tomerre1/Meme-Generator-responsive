@@ -28,6 +28,7 @@ const createLine = (text = '', font = 'Impact', colorFill = '#ffffff',
 }
 
 const saveMeme = () => {
+    gMeme.savedImg = gCanvas.toDataURL()
     gMemes.push(JSON.parse(JSON.stringify(gMeme)))
     saveToStorage(MEMES_DB, gMemes)
 }
@@ -109,7 +110,7 @@ const loadMemeById = memeId => {
     return savedMemes.find(meme => meme.id === memeId)
 }
 
-const moveCurrLine = (dx,dy) => {
+const moveCurrLine = (dx, dy) => {
     gMeme.lines[gMeme.selectedLineIdx].pos.x += dx
     gMeme.lines[gMeme.selectedLineIdx].pos.y += dy
 }

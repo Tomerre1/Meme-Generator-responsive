@@ -100,12 +100,12 @@ const onAbout = () => {
 }
 
 const onMemes = () => {
+    removeAllActiveClass()
+    document.querySelector('.memes-btn').classList.add('active')
     if (!getSavedMemes()){
         document.querySelector('.gallery-container').innerHTML = 'Nothing saved here, Go save some memes!  😉'
         return
     } 
-    removeAllActiveClass()
-    document.querySelector('.memes-btn').classList.add('active')
     toggleCanvas('none')
     toggleGallery('grid')
     toggleSearch('none')
@@ -117,8 +117,8 @@ const renderSaveMemes = () => {
     const savedMemes = getSavedMemes()
     const strHTML = savedMemes.map((meme) => {
         return `<div class="gallery-frame">
-                        <img onclick="onSavedMeme('${meme.id}')" class="gallery-image" src="${getImageById(meme.selectedImgId).url}">
-                        <div>${meme.lines[meme.selectedLineIdx].text}</div>
+                        <img onclick="onSavedMeme('${meme.id}')" class="gallery-image" src="${meme.savedImg}">
+                        <button onclick="onDeleteSavedMeme('${meme.id}')" class="delete-saved">&times</button>
                     </div>`
     }).join('')
     document.querySelector('.gallery-container').innerHTML = strHTML
@@ -126,13 +126,18 @@ const renderSaveMemes = () => {
 
 const onSavedMeme = (memeId) => {
     setMeme(loadMemeById(memeId))
-    setSelectedImage(getMeme().selectedImgId)
+    // setSelectedImage(getMeme().selectedImgId)
     document.querySelector('[name=meme-txt]').value = getMeme().lines[getSelectedLine()].text
     toggleCanvas('block')
     toggleGallery('none')
     toggleSearch('none')
     toggleAbout('none')
     renderCanvas()
+}
+
+const onDeleteSavedMeme = (memeId) => {
+    deleteMeme(memeId)
+    renderSaveMemes()
 }
 
 const onImage = imgId => {

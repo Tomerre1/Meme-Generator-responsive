@@ -64,3 +64,11 @@ const getSelectedImage = () => { return gMeme.selectedImgId }
 const getImageById = (id) => {
     return gImgs.find(img => img.id === id)
 }
+
+const deleteMeme = (memeId) => {
+    let savedMemes = loadFromStorage(MEMES_DB)
+    const ind = savedMemes.indexOf(meme => meme.id === memeId)
+    savedMemes.splice(ind, 1)
+    saveToStorage(MEMES_DB, savedMemes)
+
+}
