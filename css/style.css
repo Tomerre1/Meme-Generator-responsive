@@ -256,11 +256,11 @@ input[list] {
 }
 
 /* SAVED MEMES */
-.delete-saved{
+.delete-saved {
   padding-block-end: 50px;
   position: absolute;
-  right:0;
-  top:0;
+  right: 0;
+  top: 0;
   font-size: 50px;
   border: 0;
   background-color: transparent;
@@ -300,36 +300,36 @@ canvas {
     "download download . share share";
 }
 .color-stroke,
-.color-fill {
+.color-fill,
+.file-input {
   position: absolute;
   visibility: hidden;
 }
 
-.btn-left-stickers{
+.btn-left-stickers {
   grid-area: left-arrow-stickers;
 }
-.btn-right-stickers{
+.btn-right-stickers {
   grid-area: right-arrow-stickers;
-
 }
-.btns-stickers{
-  background-color:white;
+.btns-stickers {
+  background-color: white;
   grid-area: stickers;
   border-radius: 10px;
   font-size: 40px;
   cursor: pointer;
 }
 
-.emojis{
-  background-color:transparent;
+.emojis {
+  background-color: transparent;
   border: 0;
   font-size: 35px;
   cursor: pointer;
 }
-.chevron-icon{
-  width:35px;
-  border:0;
-  background-color:transparent;
+.chevron-icon {
+  width: 35px;
+  border: 0;
+  background-color: transparent;
   cursor: pointer;
 }
 .btn-save {

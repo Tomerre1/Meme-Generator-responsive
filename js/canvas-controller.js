@@ -283,3 +283,31 @@ const onLeftStickers = () => {
 
 }
 
+// The next 2 functions handle IMAGE UPLOADING to img tag from file system: 
+function onImgInput(ev) {
+    loadImageFromInput(ev, renderImg)
+}
+
+function loadImageFromInput(ev, onImageReady) {
+    var reader = new FileReader()
+
+    reader.onload = function (event) {
+        gImg = new Image()
+        gImg.onload = onImageReady.bind(null, gImg)
+        gImg.src = event.target.result
+    }
+    reader.readAsDataURL(ev.target.files[0])
+}
+
+
+function renderImg(gImg) {
+    //haser ctx.draw//
+    initMeme()
+    toggleCanvas('block')
+    toggleGallery('none')
+    toggleSearch('none')
+    toggleAbout('none')
+    renderStickers()
+    // renderCanvas(gImg)
+}
+

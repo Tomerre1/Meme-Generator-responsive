@@ -13,7 +13,12 @@ const onGallery = () => {
 }
 
 const renderGallery = () => {
-    let strHTML = (getFilterBy() === '') ? `<div class="gallery-frame"> <img onclick="onUploadPhoto()" class="gallery-image" src="img/upload.jpg"> </div>` : ''
+    let strHTML = (getFilterBy() === '') ? `<div class="gallery-frame">
+                                                <label for="file-upload">
+                                                    <img class="gallery-image" src="img/upload.jpg"> 
+                                                </label>
+                                                <input type="file" id="file-upload" class="file-input btn" name="image" onchange="onImgInput(event)" /> 
+                                            </div>` : ''
     strHTML += filterInput().map((img) => {
         return `<div class="gallery-frame">
                     <img onclick="onImage(${img.id})" class="gallery-image" src="${img.url}">
