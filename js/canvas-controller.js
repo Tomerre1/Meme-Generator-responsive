@@ -6,6 +6,18 @@ let gImg
 let isDownload = false
 let gStartPos
 const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
+const gStickers = [
+    { sticker: '🧔', id: 0 },
+    { sticker: '👨‍✈️', id: 1 },
+    { sticker: '👩', id: 2 },
+    { sticker: '🥩', id: 3 },
+    { sticker: '🌹', id: 4 },
+    { sticker: '💐', id: 5 },
+    { sticker: '🌰', id: 6 },
+    { sticker: '🥕', id: 7 },
+    { sticker: '🧅', id: 8 }
+]
+let gStickerState = { startInd: 0, endInd: 3 }
 
 const init = () => {
     gCanvas = document.querySelector('.my-canvas')
@@ -84,7 +96,7 @@ const resizeCanvas = () => {
     const elContainer = document.querySelector('.canvas-container')
     const elMemeContainer = document.querySelector('.meme-container')
     if (getComputedStyle(elMemeContainer, null).display === 'none') return
-    let ratio = Math.min(elContainer.offsetWidth-20, elContainer.offsetHeight)
+    let ratio = Math.min(elContainer.offsetWidth - 20, elContainer.offsetHeight)
     if (ratio >= 500) ratio = 500
     gCanvas.width = ratio
     gCanvas.height = ratio
@@ -242,5 +254,41 @@ const drawRect = (x, y, textLength, txtHeight) => {
     gCtx.rect(x, y - txtHeight * 0.9, textLength * 1.05, txtHeight)
     gCtx.strokeStyle = 'gray'
     gCtx.stroke()
+}
+
+const renderStickers = () => {
+    if (gStickerState.endInd >= gStickers.length) {
+        gStickerState.startInd = gStickers.length - 3
+        gStickerState.endInd = gStickers.length
+    }
+
+    else if (gStickerState.startInd <= 0) {
+        gStickerState.startInd = 0
+        gStickerState.endInd = 3
+    }
+
+    let strHTML = ''
+    for (let i = gStickerState.startInd; i < gStickerState.endInd; i++) {
+        strHTML += `<button class="emojis" onclick="onSticker('${gStickers[i].sticker}')">${gStickers[i].sticker}</button>`
+    }
+    document.querySelector('.stickers').innerHTML = strHTML
+
+}
+
+const onSticker = emoji => {
+    createLine(emoji)
+    renderCanvas()
+}
+
+const onRightStickers = () => {
+    gStickerState.startInd += 3
+    gStickerState.endInd += 3
+    renderStickers()
+}
+const onLeftStickers = () => {
+    gStickerState.startInd -= 3
+    gStickerState.endInd -= 3
+    renderStickers()
+
 }
 

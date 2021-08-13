@@ -133,6 +133,7 @@ const onSavedMeme = (memeId) => {
     toggleSearch('none')
     toggleAbout('none')
     renderCanvas()
+    renderStickers()
 }
 
 const onDeleteSavedMeme = (memeId) => {
@@ -149,4 +150,5 @@ const onImage = imgId => {
     toggleSearch('none')
     toggleAbout('none')
     renderCanvas()
+    renderStickers()
 }

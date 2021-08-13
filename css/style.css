@@ -295,12 +295,42 @@ canvas {
     "plus minus align-left align-center align-right"
     "font font font up right"
     "save color-fill color-stroke down left "
+    "stickers stickers stickers stickers stickers"
+    "stickers stickers stickers stickers stickers"
     "download download . share share";
 }
 .color-stroke,
 .color-fill {
   position: absolute;
   visibility: hidden;
+}
+
+.btn-left-stickers{
+  grid-area: left-arrow-stickers;
+}
+.btn-right-stickers{
+  grid-area: right-arrow-stickers;
+
+}
+.btns-stickers{
+  background-color:white;
+  grid-area: stickers;
+  border-radius: 10px;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.emojis{
+  background-color:transparent;
+  border: 0;
+  font-size: 35px;
+  cursor: pointer;
+}
+.chevron-icon{
+  width:35px;
+  border:0;
+  background-color:transparent;
+  cursor: pointer;
 }
 .btn-save {
   grid-area: save;
