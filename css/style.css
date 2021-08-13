@@ -13,7 +13,7 @@
 /* FONT AWSOME */
 @font-face {
   font-family: Brands;
-  src: url(/fonts/Awesome/fa-brands-400.ttf);
+  src: url(../fonts/Awesome/fa-brands-400.ttf);
 }
 
 .fab::before {
@@ -269,6 +269,7 @@ canvas {
   display: block;
   outline: 1px solid black;
   background-color: white;
+  cursor: grab;
 }
 
 /* CANVAS - BUTTONS */
