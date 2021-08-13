@@ -13,7 +13,7 @@
 /* FONT AWSOME */
 @font-face {
   font-family: Brands;
-  src: url(../fonts/Awesome/fa-brands-400.ttf);
+  src: url(../fonts/fa-brands-400.ttf);
 }
 
 .fab::before {
