@@ -101,9 +101,9 @@ const onAbout = () => {
 }
 
 const onMemes = () => {
+    if (!getSavedMemes()) return
     removeAllActiveClass()
     document.querySelector('.memes-btn').classList.add('active')
-    if (!getSavedMemes()) return
     toggleCanvas('none')
     toggleGallery('grid')
     toggleSearch('none')
