@@ -8,7 +8,7 @@ let gStartPos
 const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 
 const init = () => {
-    gCanvas = document.getElementById('my-canvas')
+    gCanvas = document.querySelector('.my-canvas')
     gCtx = gCanvas.getContext('2d')
     renderGallery()
     renderKeywords()
@@ -54,14 +54,13 @@ const onGrabDown = (ev) => {
     if (!isLineClicked(pos)) return
     setLineDrag(true)
     gStartPos = pos
-    document.body.style.cursor = 'grabbing'
+    gCanvas.style.cursor = 'grabbing'
 
 }
 
 const onGrabUp = () => {
     setLineDrag(false)
-    document.body.style.cursor = 'grab'
-    //maybe save db//
+    gCanvas.style.cursor = 'grab'
 }
 
 const getEvPos = (ev) => {

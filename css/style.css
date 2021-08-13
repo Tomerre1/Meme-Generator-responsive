@@ -267,7 +267,6 @@ input[list] {
 }
 canvas {
   display: block;
-
   outline: 1px solid black;
   background-color: white;
 }

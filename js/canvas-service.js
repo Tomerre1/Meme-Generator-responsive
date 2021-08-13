@@ -112,7 +112,6 @@ const loadMemeById = memeId => {
 const moveCurrLine = (dx,dy) => {
     gMeme.lines[gMeme.selectedLineIdx].pos.x += dx
     gMeme.lines[gMeme.selectedLineIdx].pos.y += dy
-    // maybe save db
 }
 
 const setLineDrag = isDrag => {
