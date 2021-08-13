@@ -102,7 +102,7 @@ const renderSaveMemes = () => {
     const strHTML = savedMemes.map((meme) => {
         return `<div class="gallery-frame">
                         <img onclick="onSavedMeme('${meme.id}')" class="gallery-image" src="${getImageById(meme.selectedImgId).url}">
-                        <div>${getImageById(meme.selectedImgId).keywords.join(' , ')}</div>
+                        <div>${meme.lines[meme.selectedLineIdx].text}</div>
                     </div>`
     }).join('')
     document.querySelector('.gallery-container').innerHTML = strHTML

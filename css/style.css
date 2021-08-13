@@ -31,12 +31,12 @@
   content: "\f16d";
 }
 
-.fab.fa-twitter::before {
-  content: "\f099";
+.fab.fa-whatsapp::before {
+  content: "\f232";
 }
 
-.fab.fa-pinterest::before {
-  content: "\f0d2";
+.fab.fa-linkedin::before {
+  content: "\f0e1";
 }
 
 body {
