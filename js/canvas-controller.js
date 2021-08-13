@@ -210,9 +210,13 @@ const renderLinePrefs = () => {
 
 const downloadCanvas = (elLink) => {
     isDownload = true
-    renderCanvas()
+    gCtx.drawImage(gImg, 0, 0, gCanvas.width, gCanvas.height)
+    getMeme().lines.forEach((txt, ind) => {
+        drawText(txt.pos.x, txt.pos.y, txt.text, txt.colorStroke, txt.colorFill, txt.fontSize, txt.font, ind)
+    })
     const data = gCanvas.toDataURL()
     elLink.href = data
+    isDownload = false
 }
 
 const onChangeFont = (font) => {

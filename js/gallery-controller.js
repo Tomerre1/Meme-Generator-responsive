@@ -10,7 +10,6 @@ const onGallery = () => {
     removeAllActiveClass()
     document.querySelector('.gallery-btn').classList.add('active')
     document.querySelector('.categorys').value = '';
-    isDownload = false
 }
 
 const renderGallery = () => {
