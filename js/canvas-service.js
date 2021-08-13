@@ -20,7 +20,8 @@ const createLine = (text = '', font = 'Impact', colorFill = '#ffffff',
         colorFill,
         colorStroke,
         fontSize,
-        text
+        text,
+        isDrag: false
     }
     gMeme.lines.push(memeTxt)
     gMeme.selectedLineIdx++;
@@ -43,8 +44,8 @@ const setTexts = txt => {
 
 const getMeme = () => { return gMeme }
 
-const setMeme = meme => { 
-    gMeme = meme 
+const setMeme = meme => {
+    gMeme = meme
     gMeme.id = makeId()
 }
 
@@ -108,12 +109,23 @@ const loadMemeById = memeId => {
     return savedMemes.find(meme => meme.id === memeId)
 }
 
-// const clearText = () => {
-//     /*maybe id*/
-//     gMeme.lines = []
-//     createLine()
-//     gMeme.selectedLineIdx = 0
-// }
+const moveCurrLine = (dx,dy) => {
+    gMeme.lines[gMeme.selectedLineIdx].pos.x += dx
+    gMeme.lines[gMeme.selectedLineIdx].pos.y += dy
+    // maybe save db
+}
+
+const setLineDrag = isDrag => {
+    gMeme.lines[gMeme.selectedLineIdx].isDrag = isDrag
+}
+
+
+const isLineClicked = clickedPos => {
+    const { pos } = gMeme.lines[gMeme.selectedLineIdx]
+    const distance = Math.sqrt((pos.x - clickedPos.x) ** 2 + (pos.y - clickedPos.y) ** 2)
+    return distance <= gCtx.measureText(gMeme.lines[gMeme.selectedLineIdx].text).width
+}
+
 
 
 

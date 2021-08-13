@@ -4,6 +4,8 @@ let gCtx
 let gInput
 let gImg
 let isDownload = false
+let gStartPos
+const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 
 const init = () => {
     gCanvas = document.getElementById('my-canvas')
@@ -18,7 +20,66 @@ const addEventListeners = () => {
     gInput.addEventListener('input', onText)
     addEventListenersGallery()
     window.addEventListener('resize', resizeCanvas)
+    addMouseListeners()
+    addTouchListeners()
 }
+
+const addMouseListeners = () => {
+    gCanvas.addEventListener('mousemove', onGrabMove)
+    gCanvas.addEventListener('mousedown', onGrabDown)
+    gCanvas.addEventListener('mouseup', onGrabUp)
+}
+
+const addTouchListeners = () => {
+    gCanvas.addEventListener('touchmove', onGrabMove)
+    gCanvas.addEventListener('touchstart', onGrabDown)
+    gCanvas.addEventListener('touchend', onGrabUp)
+}
+
+const onGrabMove = (ev) => {
+    const currLine = getMeme().lines[getSelectedLine()]
+    if (currLine.isDrag) {
+        const pos = getEvPos(ev)
+        const dx = pos.x - currLine.pos.x
+        const dy = pos.y - currLine.pos.y
+        moveCurrLine(dx, dy)
+        gStartPos = pos
+        renderCanvas()
+    }
+}
+
+
+const onGrabDown = (ev) => {
+    const pos = getEvPos(ev)
+    if (!isLineClicked(pos)) return
+    setLineDrag(true)
+    gStartPos = pos
+    document.body.style.cursor = 'grabbing'
+
+}
+
+const onGrabUp = () => {
+    setLineDrag(false)
+    document.body.style.cursor = 'grab'
+    //maybe save db//
+}
+
+const getEvPos = (ev) => {
+    let pos = {
+        x: ev.offsetX,
+        y: ev.offsetY
+    }
+    if (gTouchEvs.includes(ev.type)) {
+        ev.preventDefault()
+        ev = ev.changedTouches[0]
+        pos = {
+            x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+            y: ev.pageY - ev.target.offsetTop - ev.target.clientTop
+        }
+    }
+    return pos
+}
+
 
 const resizeCanvas = () => {
     const elContainer = document.querySelector('.canvas-container')
@@ -179,3 +240,4 @@ const drawRect = (x, y, textLength, txtHeight) => {
     gCtx.strokeStyle = 'gray'
     gCtx.stroke()
 }
+
