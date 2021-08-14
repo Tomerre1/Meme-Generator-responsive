@@ -44,7 +44,6 @@ body {
   margin: 0;
   padding: 0;
   background-color: #e3e3e3;
-  height: 100vh;
 }
 
 /* BASE */
@@ -57,7 +56,7 @@ a:hover {
 /* LAYOUTS */
 
 .main-layout {
-  max-width: 850px;
+  max-width: 750px;
   margin: 0 auto;
 }
 
@@ -236,7 +235,6 @@ input[list] {
 
 .gallery-frame {
   padding: 0.5rem;
-  font-size: 1.2rem;
   text-align: center;
   background-color: #333;
   color: #d9d9d9;
@@ -304,6 +302,7 @@ canvas {
 .file-input {
   position: absolute;
   visibility: hidden;
+  width: 0px;
 }
 
 .btn-left-stickers {
@@ -537,7 +536,7 @@ body.menu-open .screen {
   line-height: 1.5rem;
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 750px) {
   .header-nav {
     position: fixed;
     left: 0;

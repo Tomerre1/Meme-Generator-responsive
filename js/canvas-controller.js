@@ -8,7 +8,7 @@ let gStartPos
 const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 const gStickers = ['😎', '😭', '😍', '😂', '🤑', '🥳', '🤫', '🌷', '🤬']
 let gStickerState = { startInd: 0, endInd: 3 }
-
+let gUploadedPhoto
 
 const init = () => {
     gCanvas = document.querySelector('.my-canvas')
@@ -105,17 +105,17 @@ const drawText = (x, y, text, colorStroke, colorFill, fontSize, font, selectedIn
     gCtx.save()
 }
 
-const renderCanvas = () => {
-    gImg = new Image();
-    gImg.src = `img/${getSelectedImage()}.jpg`
-    gImg.onload = () => {
-        gCtx.drawImage(gImg, 0, 0, gCanvas.width, gCanvas.height)
-        getMeme().lines.forEach((txt, ind) => {
-            drawText(txt.pos.x, txt.pos.y, txt.text, txt.colorStroke, txt.colorFill, txt.fontSize, txt.font, ind)
-        })
-    }
+// const renderCanvas = () => {
+//     gImg = new Image();
+//     gImg.src = `img/${getSelectedImage()}.jpg`
+//     gImg.onload = () => {
+//         gCtx.drawImage(gImg, 0, 0, gCanvas.width, gCanvas.height)
+//         getMeme().lines.forEach((txt, ind) => {
+//             drawText(txt.pos.x, txt.pos.y, txt.text, txt.colorStroke, txt.colorFill, txt.fontSize, txt.font, ind)
+//         })
+//     }
 
-}
+// }
 
 const onText = () => {
     setTexts(gInput.value)
@@ -292,22 +292,34 @@ function loadImageFromInput(ev, onImageReady) {
     var reader = new FileReader()
 
     reader.onload = function (event) {
-        gImg = new Image()
-        gImg.onload = onImageReady.bind(null, gImg)
-        gImg.src = event.target.result
+        gUploadedPhoto = new Image()
+        gUploadedPhoto.onload = onImageReady.bind(null, gUploadedPhoto)
+        gUploadedPhoto.src = event.target.result
     }
     reader.readAsDataURL(ev.target.files[0])
 }
 
 
 function renderImg(gImg) {
-    //haser ctx.draw//
+    // gCtx.drawImage(gImg, 0, 0, gCanvas.width, gCanvas.height)
     initMeme()
     toggleCanvas('block')
     toggleGallery('none')
     toggleSearch('none')
     toggleAbout('none')
     renderStickers()
-    // renderCanvas(gImg)
+    renderCanvas()
 }
 
+
+const renderCanvas = () => {
+    gImg = new Image()
+    gImg.src = (getSelectedImage() > -1) ? `img/${getSelectedImage()}.jpg` : gUploadedPhoto.src
+    gImg.onload = () => {
+        gCtx.drawImage(gImg, 0, 0, gCanvas.width, gCanvas.height)
+        getMeme().lines.forEach((txt, ind) => {
+            drawText(txt.pos.x, txt.pos.y, txt.text, txt.colorStroke, txt.colorFill, txt.fontSize, txt.font, ind)
+        })
+    }
+
+}

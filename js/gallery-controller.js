@@ -109,19 +109,22 @@ const onAbout = () => {
 const onMemes = () => {
     removeAllActiveClass()
     document.querySelector('.memes-btn').classList.add('active')
-    if (!getSavedMemes()) {
-        document.querySelector('.gallery-container').innerHTML = 'Nothing saved here, Go save some memes!  😉'
-        return
-    }
     toggleCanvas('none')
     toggleGallery('grid')
     toggleSearch('none')
     toggleAbout('none')
     renderSaveMemes()
+    isSavedPictures()
+}
+
+const isSavedPictures = () => {
+    if (!getSavedMemes() || !getSavedMemes().length)
+        document.querySelector('.gallery-container').innerHTML = 'Nothing saved here, Go save some memes!  😉'
 }
 
 const renderSaveMemes = () => {
     const savedMemes = getSavedMemes()
+    if(!savedMemes) return
     const strHTML = savedMemes.map((meme) => {
         return `<div class="gallery-frame">
                         <img onclick="onSavedMeme('${meme.id}')" class="gallery-image" src="${meme.savedImg}">
@@ -146,6 +149,7 @@ const onSavedMeme = (memeId) => {
 const onDeleteSavedMeme = (memeId) => {
     deleteMeme(memeId)
     renderSaveMemes()
+    isSavedPictures()
 }
 
 const onImage = imgId => {
