@@ -44,6 +44,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #e3e3e3;
+  height:100vh;
 }
 
 /* BASE */
@@ -105,7 +106,6 @@ header {
 /*HEADER NAV*/
 
 nav {
-  margin-inline-end: 2rem;
   position: relative;
 }
 
@@ -226,7 +226,7 @@ input[list] {
 }
 
 .gallery-container {
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 0.5fr));
   justify-items: center;
   margin: 0 auto;
   grid-gap: 1.5rem;

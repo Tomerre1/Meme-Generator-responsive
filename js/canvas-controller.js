@@ -47,7 +47,7 @@ const onGrabMove = (ev) => {
         const dy = pos.y - currLine.pos.y
         moveCurrLine(dx, dy)
         gStartPos = pos
-        renderCanvas()
+        resizeCanvas()
     }
 }
 
@@ -105,71 +105,59 @@ const drawText = (x, y, text, colorStroke, colorFill, fontSize, font, selectedIn
     gCtx.save()
 }
 
-// const renderCanvas = () => {
-//     gImg = new Image();
-//     gImg.src = `img/${getSelectedImage()}.jpg`
-//     gImg.onload = () => {
-//         gCtx.drawImage(gImg, 0, 0, gCanvas.width, gCanvas.height)
-//         getMeme().lines.forEach((txt, ind) => {
-//             drawText(txt.pos.x, txt.pos.y, txt.text, txt.colorStroke, txt.colorFill, txt.fontSize, txt.font, ind)
-//         })
-//     }
-
-// }
-
 const onText = () => {
     setTexts(gInput.value)
     clearCanvas()
-    renderCanvas()
+    resizeCanvas()
 }
 
 
 const onSetColorFill = (color) => {
     setColorFill(color)
     clearCanvas()
-    renderCanvas()
+    resizeCanvas()
 }
 
 const onSetColorStroke = (color) => {
     setColorStroke(color)
     clearCanvas()
-    renderCanvas()
+    resizeCanvas()
 }
 
 const onPlus = () => {
     setFontSize(10)
     clearCanvas()
-    renderCanvas()
+    resizeCanvas()
 }
 
 const onMinus = () => {
     setFontSize(-10)
     clearCanvas()
-    renderCanvas()
+    resizeCanvas()
 }
 
 const onDown = () => {
     setPosY(10)
     clearCanvas()
-    renderCanvas()
+    resizeCanvas()
 }
 
 const onUp = () => {
     setPosY(-10)
     clearCanvas()
-    renderCanvas()
+    resizeCanvas()
 }
 
 const onRight = () => {
     setPosX(10)
     clearCanvas()
-    renderCanvas()
+    resizeCanvas()
 }
 
 const onLeft = () => {
     setPosX(-10)
     clearCanvas()
-    renderCanvas()
+    resizeCanvas()
 }
 
 const onSave = () => {
@@ -184,7 +172,7 @@ const onDeleteLine = () => {
     document.querySelector('[name=meme-txt]').value = ''
     deleteLine()
     clearCanvas()
-    renderCanvas()
+    resizeCanvas()
 
 }
 
@@ -198,7 +186,7 @@ const onAddLine = () => {
 const onSwitchLine = () => {
     switchLine()
     renderLinePrefs()
-    renderCanvas()
+    resizeCanvas()
 }
 
 const renderLinePrefs = () => {
@@ -225,7 +213,7 @@ const downloadCanvas = (elLink) => {
 const onChangeFont = (font) => {
     setFont(font)
     clearCanvas()
-    renderCanvas()
+    resizeCanvas()
 }
 
 const toggleCanvas = (state) => {
@@ -237,7 +225,7 @@ const toggleCanvas = (state) => {
 const onAlign = side => {
     setAlign(side)
     clearCanvas()
-    renderCanvas()
+    resizeCanvas()
 }
 
 const drawRect = (x, y, textLength, txtHeight) => {
@@ -268,7 +256,7 @@ const renderStickers = () => {
 
 const onSticker = emoji => {
     createLine(emoji)
-    renderCanvas()
+    resizeCanvas()
 }
 
 const onRightStickers = () => {
@@ -308,7 +296,7 @@ function renderImg(gImg) {
     toggleSearch('none')
     toggleAbout('none')
     renderStickers()
-    renderCanvas()
+    resizeCanvas()
 }
 
 
