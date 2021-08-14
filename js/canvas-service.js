@@ -130,9 +130,28 @@ const shareFacebook = () => {
     const onSuccess = uploadedImgUrl => {
         const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
         const url = `https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}`
-        window.open(url , "_blank");
+        window.open(url, "_blank");
     }
     doUploadImg(imgDataUrl, onSuccess);
+}
+
+async function shareOtherApps() {
+    const dataUrl = gCanvas.toDataURL();
+    const blob = await (await fetch(dataUrl)).blob();
+    const filesArray = [
+      new File(
+        [blob],
+        'meme.png',
+        {
+          type: blob.type,
+          lastModified: new Date().getTime()
+        }
+      )
+    ];
+    const shareData = {
+      files: filesArray,
+    };
+    navigator.share(shareData);
 }
 
 const doUploadImg = (imgDataUrl, onSuccess) => {

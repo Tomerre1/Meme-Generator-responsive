@@ -12,6 +12,7 @@
 
 <body onload="init()">
     <div class="screen" onclick="toggleMenu()"></div>
+    <div class="screen-modal" onclick="toggleModal()"></div>
     <header>
         <div class="gallery-header flex align-center space-between">
             <img class="logo" src="img/logo.png" alt="" onclick="onGallery()">
@@ -127,7 +128,14 @@
             Hello! , My name is Tomer Revah and im software engineering student at 4th year.
             I'm a student at Coding Academy also and i'm on the highway to become a fullstack developer.
         </p>
+    </section>
 
+    <section class="modal" >
+        <div class="share-buttons">
+            <button onclick="onShareFacebook()">Share Facebook</button>
+            <button onclick="onShareOtherApps()">Share WebApis</button>
+        </div>
+        <button class="close-modal" onclick="toggleModal()">&times</button>
     </section>
 
     <footer class="flex align-center">

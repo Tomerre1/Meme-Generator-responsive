@@ -288,8 +288,18 @@ const renderCanvas = () => {
     }
 }
 
-const onShare = () => {shareFacebook()}
+const onShare = () => {
+    toggleModal()
+}
 
+const toggleModal = () => {
+    document.body.classList.toggle('modal-open')
+}
 
+const onShareOtherApps = () => {
+    shareOtherApps()
+}
 
-
+const onShareFacebook = () => {
+    shareFacebook()
+}

@@ -466,7 +466,8 @@ body.menu-open .btn-menu-toggle::before {
   content: "X";
 }
 
-.screen {
+.screen,
+.screen-modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -480,9 +481,57 @@ body.menu-open .btn-menu-toggle::before {
   z-index: 50;
 }
 
-body.menu-open .screen {
+body.menu-open .screen,
+body.modal-open .screen-modal {
   opacity: 1;
   pointer-events: auto;
+}
+
+.modal {
+  position: fixed;
+  display: none;
+  justify-content: center;
+  background-color: #ff7f00;
+  z-index: 300;
+  width: 300px;
+  height: 300px;
+  border-radius: 20px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: -8px 0px 20px rgb(0 0 0 / 20%);
+}
+
+body.modal-open .modal {
+  display: flex;
+}
+
+.share-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.share-buttons > button {
+  border: 0;
+  background-color: white;
+  border-radius: 20px;
+  padding: 1.5rem;
+  cursor:pointer;
+}
+
+.share-buttons > button:first-child {
+  margin-block-end: 1.2rem;
+}
+
+.close-modal {
+  position: absolute;
+  right: 0;
+  border: 0;
+  background-color: transparent;
+  font-size: 40px;
+  cursor:pointer;
 }
 
 .about {
