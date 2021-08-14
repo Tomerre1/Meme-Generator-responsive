@@ -57,7 +57,7 @@ a:hover {
 /* LAYOUTS */
 
 .main-layout {
-  max-width: 750px;
+  max-width: 780px;
   margin: 0 auto;
 }
 
@@ -304,7 +304,7 @@ canvas {
 .file-input {
   position: absolute;
   visibility: hidden;
-  width: 0px;
+  width: 1px;
 }
 
 .btn-left-stickers {
@@ -324,7 +324,7 @@ canvas {
 .emojis {
   background-color: transparent;
   border: 0;
-  font-size: 35px;
+  font-size: 30px;
   cursor: pointer;
 }
 .chevron-icon {
@@ -538,7 +538,7 @@ body.menu-open .screen {
   line-height: 1.5rem;
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 780px) {
   .header-nav {
     position: fixed;
     left: 0;
@@ -562,7 +562,7 @@ body.menu-open .screen {
   }
 }
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 780px) {
   .main-layout {
     max-width: 980px;
   }

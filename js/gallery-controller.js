@@ -138,7 +138,7 @@ const onSavedMeme = (memeId) => {
     setMeme(loadMemeById(memeId))
     document.querySelector('[name=meme-txt]').value = getMeme().lines[getSelectedLine()].text
     toggleImage()
-    renderCanvas()
+    resizeCanvas()
     renderStickers()
 }
 
