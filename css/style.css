@@ -319,6 +319,13 @@ canvas {
   cursor: pointer;
 }
 
+.btn-download,
+.btn-share {
+  border: 0;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
 .emojis {
   background-color: transparent;
   border: 0;
@@ -451,12 +458,12 @@ footer > .logo {
   cursor: pointer;
 }
 
-.btn-menu-toggle::before{
-  content: "☰"
+.btn-menu-toggle::before {
+  content: "☰";
 }
 
-body.menu-open .btn-menu-toggle::before{
-  content: "X"
+body.menu-open .btn-menu-toggle::before {
+  content: "X";
 }
 
 .screen {

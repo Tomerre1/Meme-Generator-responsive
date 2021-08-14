@@ -129,7 +129,7 @@ const shareFacebook = () => {
     const imgDataUrl = gCanvas.toDataURL("image/jpeg");
     const onSuccess = uploadedImgUrl => {
         const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
-        const url = `https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}'); return false;`
+        const url = `https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}`
         window.open(url , "_blank");
     }
     doUploadImg(imgDataUrl, onSuccess);
