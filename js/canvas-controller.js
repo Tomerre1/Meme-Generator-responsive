@@ -107,56 +107,47 @@ const drawText = (x, y, text, colorStroke, colorFill, fontSize, font, selectedIn
 
 const onText = () => {
     setTexts(gInput.value)
-    // clearCanvas()
     resizeCanvas()
 }
 
 
 const onSetColorFill = (color) => {
     setColorFill(color)
-    // clearCanvas()
     resizeCanvas()
 }
 
 const onSetColorStroke = (color) => {
     setColorStroke(color)
-    // clearCanvas()
     resizeCanvas()
 }
 
 const onPlus = () => {
     setFontSize(10)
-    // clearCanvas()
     resizeCanvas()
 }
 
 const onMinus = () => {
     setFontSize(-10)
-    // clearCanvas()
     resizeCanvas()
 }
 
 const onDown = () => {
     setPosY(10)
-    // clearCanvas()
     resizeCanvas()
 }
 
 const onUp = () => {
     setPosY(-10)
-    // clearCanvas()
     resizeCanvas()
 }
 
 const onRight = () => {
     setPosX(10)
-    // clearCanvas()
     resizeCanvas()
 }
 
 const onLeft = () => {
     setPosX(-10)
-    // clearCanvas()
     resizeCanvas()
 }
 
