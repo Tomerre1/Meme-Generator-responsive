@@ -217,7 +217,7 @@ input[list] {
 
 /* GALLERY */
 .gallery-header {
-  position: relative; /*???*/
+  position: relative;
 }
 
 .gallery-header > img {
@@ -301,9 +301,7 @@ canvas {
 .color-fill,
 .file-input {
   position: absolute;
-  visibility: hidden;
-  width: 0px;
-  height: 0px;
+  opacity: 0;
 }
 
 .btn-left-stickers {
