@@ -286,7 +286,7 @@ canvas {
 /* CANVAS - BUTTONS */
 .meme-buttons {
   grid-template: repeat(6, 1fr) / repeat(5, 1fr);
-  grid-gap: 0px;
+  grid-gap: 10px;
   grid-template-areas:
     "txt txt txt txt txt"
     ". switch addLine delete ."
@@ -581,7 +581,7 @@ body.menu-open .screen {
     flex-direction: row;
     gap: 50px;
   }
-
+  
   .about {
     flex-direction: row;
   }
