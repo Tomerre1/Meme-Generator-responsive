@@ -225,7 +225,7 @@ input[list] {
 }
 
 .gallery-container {
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   justify-items: center;
   margin: 0 auto;
   grid-gap: 1.5rem;
