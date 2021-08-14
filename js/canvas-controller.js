@@ -153,6 +153,8 @@ const onLeft = () => {
 
 const onSave = () => {
     saveMeme()
+    document.querySelector('.modal-body').innerHTML = 'Saved! Go Check Memes Tab'
+    toggleModal()
 }
 
 const clearCanvas = () => {
@@ -289,6 +291,8 @@ const renderCanvas = () => {
 }
 
 const onShare = () => {
+    document.querySelector('.modal-body').innerHTML = `<button onclick="onShareFacebook()">Share Facebook</button>
+                                                        <button onclick="onShareOtherApps()">Share WebApis</button>`
     toggleModal()
 }
 

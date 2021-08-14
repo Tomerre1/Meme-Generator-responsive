@@ -262,6 +262,7 @@ input[list] {
   border: 0;
   background-color: transparent;
   cursor: pointer;
+  color:white;
 }
 
 /* CANVAS */
@@ -506,22 +507,30 @@ body.modal-open .modal {
   display: flex;
 }
 
-.share-buttons {
+.modal-body {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  color:white;
 }
 
-.share-buttons > button {
+.modal-body > button {
   border: 0;
   background-color: white;
   border-radius: 20px;
   padding: 1.5rem;
   cursor:pointer;
+  transition: background-color  0.6s;
+}
+.modal-body > button:first-child:hover {
+  background-color:#3b5998;
+}
+.modal-body > button:last-child:hover {
+  background-color:#25d366;
 }
 
-.share-buttons > button:first-child {
+.modal-body > button:first-child {
   margin-block-end: 1.2rem;
 }
 
@@ -532,6 +541,7 @@ body.modal-open .modal {
   background-color: transparent;
   font-size: 40px;
   cursor:pointer;
+  color:white;
 }
 
 .about {
