@@ -40,7 +40,6 @@ const toggleSearch = state => {
 }
 
 const toggleAbout = state => {
-
     const display = (state === 'none') ? 'none' : 'flex'
     document.querySelector('.about').style.display = display
 }
@@ -90,8 +89,6 @@ const onMore = () => {
     gMoreState = !gMoreState
     renderKeywords()
 }
-
-
 
 const toggleMenu = () => {
     document.body.classList.toggle('menu-open');
@@ -147,7 +144,6 @@ const onDeleteSavedMeme = (memeId) => {
     renderSaveMemes()
     isSavedPictures()
 }
-
 
 const onImage = (imgId = -1) => {
     document.querySelector('[name=meme-txt]').value = ''

@@ -11,6 +11,7 @@ const initMeme = () => {
     createLine()
     gMeme.id = makeId()
 }
+
 const createLine = (text = '', font = 'Impact', colorFill = '#ffffff',
     colorStroke = '#000000', fontSize = 30) => {
     const memeTxt = {
@@ -118,7 +119,6 @@ const setLineDrag = isDrag => {
     gMeme.lines[gMeme.selectedLineIdx].isDrag = isDrag
 }
 
-
 const isLineClicked = clickedPos => {
     const { pos } = gMeme.lines[gMeme.selectedLineIdx]
     const distance = Math.sqrt((pos.x - clickedPos.x) ** 2 + (pos.y - clickedPos.y) ** 2)
@@ -126,7 +126,7 @@ const isLineClicked = clickedPos => {
 }
 
 const shareFacebook = () => {
-    const imgDataUrl = gCanvas.toDataURL("image/jpeg");
+    const imgDataUrl = gCanvas.toDataURL("image/jpeg")
     const onSuccess = uploadedImgUrl => {
         const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
         const url = `https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}`
@@ -144,7 +144,6 @@ const doUploadImg = (imgDataUrl, onSuccess) => {
     })
         .then(res => res.text())
         .then((url) => {
-            console.log('Got back live url:', url);
             onSuccess(url)
         })
         .catch((err) => {

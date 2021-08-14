@@ -107,56 +107,56 @@ const drawText = (x, y, text, colorStroke, colorFill, fontSize, font, selectedIn
 
 const onText = () => {
     setTexts(gInput.value)
-    clearCanvas()
+    // clearCanvas()
     resizeCanvas()
 }
 
 
 const onSetColorFill = (color) => {
     setColorFill(color)
-    clearCanvas()
+    // clearCanvas()
     resizeCanvas()
 }
 
 const onSetColorStroke = (color) => {
     setColorStroke(color)
-    clearCanvas()
+    // clearCanvas()
     resizeCanvas()
 }
 
 const onPlus = () => {
     setFontSize(10)
-    clearCanvas()
+    // clearCanvas()
     resizeCanvas()
 }
 
 const onMinus = () => {
     setFontSize(-10)
-    clearCanvas()
+    // clearCanvas()
     resizeCanvas()
 }
 
 const onDown = () => {
     setPosY(10)
-    clearCanvas()
+    // clearCanvas()
     resizeCanvas()
 }
 
 const onUp = () => {
     setPosY(-10)
-    clearCanvas()
+    // clearCanvas()
     resizeCanvas()
 }
 
 const onRight = () => {
     setPosX(10)
-    clearCanvas()
+    // clearCanvas()
     resizeCanvas()
 }
 
 const onLeft = () => {
     setPosX(-10)
-    clearCanvas()
+    // clearCanvas()
     resizeCanvas()
 }
 
@@ -171,7 +171,7 @@ const clearCanvas = () => {
 const onDeleteLine = () => {
     document.querySelector('[name=meme-txt]').value = ''
     deleteLine()
-    clearCanvas()
+    // clearCanvas()
     resizeCanvas()
 
 }
@@ -189,6 +189,18 @@ const onSwitchLine = () => {
     resizeCanvas()
 }
 
+const onChangeFont = (font) => {
+    setFont(font)
+    // clearCanvas()
+    resizeCanvas()
+}
+
+const onAlign = side => {
+    setAlign(side)
+    clearCanvas()
+    resizeCanvas()
+}
+
 const renderLinePrefs = () => {
     const line = getMeme().lines[getSelectedLine()]
     gInput.value = line.text
@@ -196,8 +208,6 @@ const renderLinePrefs = () => {
     document.querySelector('[name=color-fill]').value = line.colorFill
     document.querySelector(`.meme-font [value="${line.font}"]`).selected = true;
 }
-
-
 
 const downloadCanvas = (elLink) => {
     gIsDownload = true
@@ -210,22 +220,9 @@ const downloadCanvas = (elLink) => {
     gIsDownload = false
 }
 
-const onChangeFont = (font) => {
-    setFont(font)
-    clearCanvas()
-    resizeCanvas()
-}
-
 const toggleCanvas = (state) => {
     const display = (state === 'none') ? 'none' : 'block'
     document.querySelector('.meme-container').style.display = display
-}
-
-
-const onAlign = side => {
-    setAlign(side)
-    clearCanvas()
-    resizeCanvas()
 }
 
 const drawRect = (x, y, textLength, txtHeight) => {
@@ -286,11 +283,13 @@ const loadImageFromInput = (ev, onImageReady) => {
     reader.readAsDataURL(ev.target.files[0])
 }
 
-
 const renderCanvas = () => {
     gImg = new Image()
     gImg.src = (getSelectedImage() > -1) ? `img/${getSelectedImage()}.jpg` : gUploadedPhoto.src
     gImg.onload = () => {
+        let scale = Math.min(gCanvas.width / gImg.width, gCanvas.height / gImg.height);
+        gCanvas.width = gImg.width * scale
+        gCanvas.height = gImg.height * scale
         gCtx.drawImage(gImg, 0, 0, gCanvas.width, gCanvas.height)
         getMeme().lines.forEach((txt, ind) => {
             drawText(txt.pos.x, txt.pos.y, txt.text, txt.colorStroke, txt.colorFill, txt.fontSize, txt.font, ind)
@@ -298,10 +297,7 @@ const renderCanvas = () => {
     }
 }
 
-
-const onShare = () => {
-    shareFacebook()
-}
+const onShare = () => {shareFacebook()}
 
 
 
