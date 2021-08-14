@@ -87,10 +87,10 @@ const resizeCanvas = () => {
     const elContainer = document.querySelector('.canvas-container')
     const elMemeContainer = document.querySelector('.meme-container')
     if (getComputedStyle(elMemeContainer, null).display === 'none') return
-    let ratio = Math.min(elContainer.offsetWidth - 30, elContainer.offsetHeight)
-    if (ratio >= 500) ratio = 500
-    gCanvas.width = ratio
-    gCanvas.height = ratio
+    let size = Math.min(elContainer.offsetWidth - 30, elContainer.offsetHeight)
+    if (size >= 500) size = 500
+    gCanvas.width = size
+    gCanvas.height = size
     renderCanvas()
 }
 
