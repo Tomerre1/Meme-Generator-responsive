@@ -1,7 +1,6 @@
 'use strict'
 const MEMES_DB = 'meme_db'
 let gMeme = {}
-
 let gMemes = []
 
 
@@ -126,6 +125,29 @@ const isLineClicked = clickedPos => {
     return distance <= gCtx.measureText(gMeme.lines[gMeme.selectedLineIdx].text).width
 }
 
+const shareFacebook = () => {
+    const imgDataUrl = gCanvas.toDataURL("image/jpeg");
+    const onSuccess = uploadedImgUrl => {
+        const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
+        const url = `https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}'); return false;`
+        window.open(url , "_blank");
+    }
+    doUploadImg(imgDataUrl, onSuccess);
+}
 
-
-
+const doUploadImg = (imgDataUrl, onSuccess) => {
+    const formData = new FormData();
+    formData.append('img', imgDataUrl)
+    fetch('//ca-upload.com/here/upload.php', {
+        method: 'POST',
+        body: formData
+    })
+        .then(res => res.text())
+        .then((url) => {
+            console.log('Got back live url:', url);
+            onSuccess(url)
+        })
+        .catch((err) => {
+            console.error(err)
+        })
+}

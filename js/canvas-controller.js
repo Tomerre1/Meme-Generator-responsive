@@ -205,7 +205,7 @@ const downloadCanvas = (elLink) => {
     getMeme().lines.forEach((txt, ind) => {
         drawText(txt.pos.x, txt.pos.y, txt.text, txt.colorStroke, txt.colorFill, txt.fontSize, txt.font, ind)
     })
-    const data = gCanvas.toDataURL('image/jpeg', 0.5)
+    const data = gCanvas.toDataURL()
     elLink.href = data
     gIsDownload = false
 }
@@ -297,3 +297,12 @@ const renderCanvas = () => {
         })
     }
 }
+
+
+const onShare = () => {
+    shareFacebook()
+}
+
+
+
+
