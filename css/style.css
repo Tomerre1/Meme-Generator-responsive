@@ -226,7 +226,7 @@ input[list] {
 }
 
 .gallery-container {
-  grid-template-columns: repeat(auto-fit, minmax(150px, 0.5fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   justify-items: center;
   margin: 0 auto;
   grid-gap: 1.5rem;
@@ -281,6 +281,8 @@ canvas {
   outline: 1px solid black;
   background-color: white;
   cursor: grab;
+  /* width: 300px;
+  height: 300px; */
 }
 
 /* CANVAS - BUTTONS */
@@ -560,7 +562,7 @@ body.menu-open .screen {
   }
 }
 
-@media screen and (min-width: 850px) {
+@media screen and (min-width: 750px) {
   .main-layout {
     max-width: 980px;
   }
@@ -583,4 +585,8 @@ body.menu-open .screen {
   .about {
     flex-direction: row;
   }
+  /* canvas{
+    height: 500px;
+    width: 500px;
+  } */
 }

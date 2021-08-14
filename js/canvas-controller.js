@@ -87,7 +87,8 @@ const resizeCanvas = () => {
     const elContainer = document.querySelector('.canvas-container')
     const elMemeContainer = document.querySelector('.meme-container')
     if (getComputedStyle(elMemeContainer, null).display === 'none') return
-    let ratio = Math.min(elContainer.offsetWidth - 20, elContainer.offsetHeight)
+    let ratio = Math.min(elContainer.offsetWidth - 30, elContainer.offsetHeight)
+    console.log(ratio);
     if (ratio >= 500) ratio = 500
     gCanvas.width = ratio
     gCanvas.height = ratio
@@ -271,13 +272,12 @@ const onLeftStickers = () => {
 
 }
 
-// The next 2 functions handle IMAGE UPLOADING to img tag from file system: 
-function onImgInput(ev) {
-    loadImageFromInput(ev, renderImg)
+const onImgInput = ev => {
+    loadImageFromInput(ev, onImage)
 }
 
-function loadImageFromInput(ev, onImageReady) {
-    var reader = new FileReader()
+const loadImageFromInput = (ev, onImageReady) => {
+    let reader = new FileReader()
 
     reader.onload = function (event) {
         gUploadedPhoto = new Image()
@@ -285,18 +285,6 @@ function loadImageFromInput(ev, onImageReady) {
         gUploadedPhoto.src = event.target.result
     }
     reader.readAsDataURL(ev.target.files[0])
-}
-
-
-function renderImg(gImg) {
-    // gCtx.drawImage(gImg, 0, 0, gCanvas.width, gCanvas.height)
-    initMeme()
-    toggleCanvas('block')
-    toggleGallery('none')
-    toggleSearch('none')
-    toggleAbout('none')
-    renderStickers()
-    resizeCanvas()
 }
 
 
@@ -309,5 +297,4 @@ const renderCanvas = () => {
             drawText(txt.pos.x, txt.pos.y, txt.text, txt.colorStroke, txt.colorFill, txt.fontSize, txt.font, ind)
         })
     }
-
 }

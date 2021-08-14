@@ -124,7 +124,7 @@ const isSavedPictures = () => {
 
 const renderSaveMemes = () => {
     const savedMemes = getSavedMemes()
-    if(!savedMemes) return
+    if (!savedMemes) return
     const strHTML = savedMemes.map((meme) => {
         return `<div class="gallery-frame">
                         <img onclick="onSavedMeme('${meme.id}')" class="gallery-image" src="${meme.savedImg}">
@@ -136,12 +136,8 @@ const renderSaveMemes = () => {
 
 const onSavedMeme = (memeId) => {
     setMeme(loadMemeById(memeId))
-    // setSelectedImage(getMeme().selectedImgId)
     document.querySelector('[name=meme-txt]').value = getMeme().lines[getSelectedLine()].text
-    toggleCanvas('block')
-    toggleGallery('none')
-    toggleSearch('none')
-    toggleAbout('none')
+    toggleImage()
     renderCanvas()
     renderStickers()
 }
@@ -152,14 +148,19 @@ const onDeleteSavedMeme = (memeId) => {
     isSavedPictures()
 }
 
-const onImage = imgId => {
+
+const onImage = (imgId = -1) => {
     document.querySelector('[name=meme-txt]').value = ''
     initMeme()
     setSelectedImage(+imgId)
+    toggleImage()
+    renderStickers()
+    resizeCanvas()
+}
+
+const toggleImage = () => {
     toggleCanvas('block')
     toggleGallery('none')
     toggleSearch('none')
     toggleAbout('none')
-    renderCanvas()
-    renderStickers()
 }
