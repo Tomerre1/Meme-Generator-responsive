@@ -116,7 +116,7 @@ const onMemes = () => {
 
 const isSavedPictures = () => {
     if (!getSavedMemes() || !getSavedMemes().length)
-        document.querySelector('.gallery-container').innerHTML = 'Nothing saved here, Go save some memes!  😉'
+        document.querySelector('.gallery-container').innerHTML = 'Go save some memes!  😉'
 }
 
 const renderSaveMemes = () => {

@@ -1,6 +1,6 @@
 'use strict'
 const MEMES_DB = 'meme_db'
-let gMeme = {}
+let gMeme = { selectedImgId: 0, lines: [] }
 let gMemes = []
 
 
@@ -139,17 +139,17 @@ async function shareOtherApps() {
     const dataUrl = gCanvas.toDataURL();
     const blob = await (await fetch(dataUrl)).blob();
     const filesArray = [
-      new File(
-        [blob],
-        'meme.png',
-        {
-          type: blob.type,
-          lastModified: new Date().getTime()
-        }
-      )
+        new File(
+            [blob],
+            'meme.png',
+            {
+                type: blob.type,
+                lastModified: new Date().getTime()
+            }
+        )
     ];
     const shareData = {
-      files: filesArray,
+        files: filesArray,
     };
     navigator.share(shareData);
 }
