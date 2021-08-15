@@ -38,6 +38,7 @@ const addTouchListeners = () => {
     gCanvas.addEventListener('touchstart', onGrabDown)
     gCanvas.addEventListener('touchend', onGrabUp)
 }
+//לסדר מצב של העלאה של תמונה מהמחשב לעריכה כי אין לה אובייקט
 
 const onGrabMove = (ev) => {
     const currLine = getMeme().lines[getSelectedLine()]
@@ -96,7 +97,7 @@ const calcCanvasSize = () => {
 
 const renderCanvas = () => {
     gImg = new Image()
-    gImg.src = (getSelectedImage() > -1) ? `img/${getSelectedImage()}.jpg` : gUploadedPhoto.src
+    gImg.src = (getSelectedImage() && getSelectedImage() > -1) ? `img/${getSelectedImage()}.jpg` : gUploadedPhoto.src
     gImg.onload = () => {
         calcCanvasSize()
         const scale = Math.min(gCanvas.width / gImg.width, MAX_HEIGHT / gImg.height)
@@ -269,8 +270,6 @@ const onLeftStickers = () => {
     renderStickers()
 
 }
-
-
 
 const onShare = () => {
     document.querySelector('.modal-body').innerHTML = `<button onclick="onShareFacebook()">Share Facebook</button>
