@@ -224,8 +224,18 @@ input[list] {
   cursor: pointer;
 }
 
-.keywords{
-  visibility:hidden;
+.keywords {
+  visibility: hidden;
+  color: orange;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: translate(0%,0%);
+  color: #616161;
+  background: white;
+  text-shadow: #e0e0e0 1px 1px 0;
+  color: black;
 }
 
 .gallery-container {
@@ -242,20 +252,24 @@ input[list] {
   background-color: #333;
   color: #d9d9d9;
   position: relative;
+  width: 250px;
+  height: 250px;
+  box-shadow: 13px 20px 5px 0px #ccc;
+
 }
 
 .gallery-image {
   object-fit: cover;
   max-width: 100%;
   cursor: pointer;
-  height: auto;
+  height: 100%;
   transition: opacity 0.25s ease-in-out;
 }
 
 .gallery-image:hover {
   opacity: 0.75;
 }
-.gallery-frame:hover .keywords{
+.gallery-frame:hover .keywords {
   visibility: visible;
 }
 
@@ -282,7 +296,7 @@ input[list] {
 .canvas-container {
   flex-direction: column;
   gap: 50px;
-  width:100%;
+  width: 100%;
 }
 canvas {
   display: block;
