@@ -161,3 +161,7 @@ const toggleImage = () => {
     toggleSearch('none')
     toggleAbout('none')
 }
+
+const onImgInput = ev => {
+    loadImageFromInput(ev, onImage)
+}

@@ -270,20 +270,7 @@ const onLeftStickers = () => {
 
 }
 
-const onImgInput = ev => {
-    loadImageFromInput(ev, onImage)
-}
 
-const loadImageFromInput = (ev, onImageReady) => {
-    let reader = new FileReader()
-
-    reader.onload = function (event) {
-        gUploadedPhoto = new Image()
-        gUploadedPhoto.onload = onImageReady.bind(null, gUploadedPhoto)
-        gUploadedPhoto.src = event.target.result
-    }
-    reader.readAsDataURL(ev.target.files[0])
-}
 
 const onShare = () => {
     document.querySelector('.modal-body').innerHTML = `<button onclick="onShareFacebook()">Share Facebook</button>
