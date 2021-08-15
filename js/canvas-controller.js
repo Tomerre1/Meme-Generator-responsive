@@ -95,6 +95,7 @@ const calcCanvasSize = () => {
 
 
 const renderCanvas = () => {
+    if (!getMeme().selectedImgId) getMeme().selectedImgId = 1
     gImg = new Image()
     gImg.src = (getSelectedImage() > -1) ? `img/${getSelectedImage()}.jpg` : gUploadedPhoto.src
     gImg.onload = () => {
