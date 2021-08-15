@@ -28,7 +28,7 @@
 }
 
 .about {
-  display: none;
+  display:none;
   flex-direction: column;
   padding: 10rem 0;
 }

@@ -153,6 +153,12 @@ body.modal-open .modal {
   color: white;
 }
 
+
+@media screen and (min-width: 780px) {
+  .about{
+    display: none;
+  }
+}
 @media screen and (min-width: 780px) {
   .main-layout {
     max-width: 980px;
