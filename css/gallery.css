@@ -42,7 +42,7 @@
 
 .gallery-image {
   object-fit: cover;
-  object-position: left;
+  object-position: center;
   max-width: 100%;
   cursor: pointer;
   height: 100%;
