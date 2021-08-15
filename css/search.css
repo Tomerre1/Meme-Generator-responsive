@@ -1,0 +1,96 @@
+/* SEARCH */
+.search-container {
+  background-color: #fff;
+  flex-direction: column;
+}
+
+.search-btns > button {
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+  transition: color 0.4s;
+}
+
+.search-btns > button:hover {
+  color: #ff7f00;
+}
+
+.search-bar {
+  position: relative;
+}
+
+.search-icon {
+  width: 18px;
+  position: absolute;
+  right: 0;
+}
+
+.btn-Happy {
+  font-size: 24px;
+}
+
+.btn-Trump {
+  font-size: 14px;
+}
+
+.btn-Pets {
+  font-size: 18px;
+}
+
+.btn-Sleep {
+  font-size: 10px;
+}
+
+.btn-Children {
+  font-size: 24px;
+}
+
+.btn-Suprising {
+  font-size: 40px;
+}
+
+.btn-Pointing {
+  font-size: 14px;
+}
+.btn-Winner {
+  font-size: 20px;
+}
+.btn-Smart {
+  font-size: 13px;
+}
+.btn-Cool {
+  font-size: 19px;
+}
+.btn-Zero {
+  font-size: 10px;
+}
+
+.btn-more {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  padding-top: 9px;
+  text-decoration: underline;
+}
+
+input[list] {
+  border: 0;
+  outline: 0;
+  border-bottom: 2px solid #040a2c;
+  font-size: 18px;
+  background-color: transparent;
+}
+
+@media screen and (min-width: 780px) {
+  .search-container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    gap: 0 50px;
+    padding-block-start: 40px;
+    padding-block-end: 40px;
+  }
+}

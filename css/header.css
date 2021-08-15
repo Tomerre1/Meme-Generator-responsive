@@ -1,0 +1,87 @@
+/* HEADER */
+header {
+  background-color: #ff7f00;
+}
+
+.logo {
+  width: 8.32rem;
+  margin-inline-start: 2rem;
+}
+
+/*HEADER NAV*/
+
+nav {
+  position: relative;
+}
+
+.header-nav > li {
+  cursor: pointer;
+}
+
+.header-nav > li > a {
+  height: 4.125rem;
+  width: 4.313rem;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.header-nav > li:hover > a,
+.active {
+  border-bottom: 2px #040a2c solid;
+  color: black;
+}
+
+/* HAMBURGER */
+
+.btn-menu-toggle {
+  color: white;
+  position: absolute;
+  right: 10px;
+  border: 0;
+  display: block;
+  font-size: 1.5rem;
+  background-color: transparent;
+  z-index: 200;
+  cursor: pointer;
+}
+
+.btn-menu-toggle::before {
+  content: "☰";
+}
+
+body.menu-open .btn-menu-toggle::before {
+  content: "X";
+}
+
+@media screen and (max-width: 780px) {
+  .header-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    flex-direction: column;
+    min-width: 10rem;
+    background-color: rgb(255 117 24 / 90%);
+    height: 100vh;
+    transform: translateY(-100%);
+    transition: transform 0.6s;
+    z-index: 100;
+    align-items: center;
+  }
+
+  .header-nav > li:first-child {
+    margin-block-start: 40px;
+  }
+
+  body.menu-open .header-nav {
+    transform: translateY(0);
+    box-shadow: -8px 0px 20px rgb(0 0 0 / 20%);
+  }
+}
+@media screen and (min-width: 780px) {
+  .btn-menu-toggle {
+    display: none;
+  }
+}

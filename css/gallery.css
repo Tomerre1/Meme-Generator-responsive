@@ -1,0 +1,69 @@
+/* GALLERY */
+.gallery-header {
+  position: relative;
+}
+
+.gallery-header > img {
+  cursor: pointer;
+}
+
+.keywords {
+  visibility: hidden;
+  color: orange;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: translate(0%, 0%);
+  color: #616161;
+  background: white;
+  text-shadow: #e0e0e0 1px 1px 0;
+  color: black;
+}
+
+.gallery-container {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 250px));
+  justify-items: center;
+  justify-content: center;
+  grid-gap: 1.5rem;
+  padding: 20px 0;
+}
+
+.gallery-frame {
+  padding: 0.5rem;
+  text-align: center;
+  background-color: #333;
+  color: #d9d9d9;
+  position: relative;
+  width: 250px;
+  height: 250px;
+  box-shadow: 13px 20px 5px 0px #ccc;
+}
+
+.gallery-image {
+  object-fit: cover;
+  max-width: 100%;
+  cursor: pointer;
+  height: 100%;
+  transition: opacity 0.25s ease-in-out;
+}
+
+.gallery-image:hover {
+  opacity: 0.75;
+}
+.gallery-frame:hover .keywords {
+  visibility: visible;
+}
+
+/* SAVED MEMES */
+.delete-saved {
+  padding-block-end: 50px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 50px;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+  color: white;
+}

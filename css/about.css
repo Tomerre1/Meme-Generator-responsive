@@ -1,0 +1,101 @@
+/* FONT AWSOME */
+@font-face {
+  font-family: Brands;
+  src: url(../fonts/fa-brands-400.ttf);
+}
+
+.fab::before {
+  font-family: Brands;
+  font-style: normal;
+}
+
+/* SOCIAL FONTS */
+
+.fab.fa-facebook-f::before {
+  content: "\f39e";
+}
+
+.fab.fa-instagram::before {
+  content: "\f16d";
+}
+
+.fab.fa-whatsapp::before {
+  content: "\f232";
+}
+
+.fab.fa-linkedin::before {
+  content: "\f0e1";
+}
+
+.about {
+  display: none;
+  flex-direction: column;
+  padding: 10rem 0;
+}
+
+.profile-picture {
+  object-fit: cover;
+  object-position: left;
+}
+
+.team-member {
+  flex-direction: column;
+  text-align: center;
+  padding-inline-end: 40px;
+}
+
+.team-member img {
+  width: 225px;
+  height: 225px;
+  border: 7px solid #e3e3e3;
+}
+
+.team-member h4 {
+  margin: 0;
+}
+
+.text-muted {
+  color: #868e96;
+  margin: 0;
+  padding-block-end: 10px;
+}
+
+.team-member ul > a {
+  font-size: 20px;
+  line-height: 40px;
+  display: block;
+  width: 40px;
+  height: 40px;
+  transition: all 0.3s;
+  color: white;
+  border-radius: 100%;
+  outline: none;
+  background-color: #222222;
+}
+
+.team-member ul > a:hover {
+  background-color: #ff7f00;
+}
+
+.mx-auto {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.rounded-circle {
+  border-radius: 50%;
+}
+
+.social-nav > a {
+  margin-inline-end: 5px;
+}
+
+.about-description {
+  line-height: 1.5rem;
+}
+
+@media screen and (min-width: 780px) {
+  .about {
+    flex-direction: row;
+  }
+}
