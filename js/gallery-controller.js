@@ -66,6 +66,7 @@ const addEventListenersGallery = () => {
 
 const onClickWords = (elBtn) => {
     let keywords = getKeywords()
+    if (keywords[elBtn.value] > 50) return
     keywords[elBtn.value] += 5
     elBtn.style.fontSize = keywords[elBtn.value] + 'px'
     setFilterBy(elBtn.value)
