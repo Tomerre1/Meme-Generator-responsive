@@ -1,6 +1,6 @@
 'use strict'
 const MEMES_DB = 'meme_db'
-let gMeme = { selectedImgId: 0, lines: [] }
+let gMeme = { selectedImgId: 1, lines: [], selectedLineIdx: -1, id: makeId() }
 let gMemes = []
 
 

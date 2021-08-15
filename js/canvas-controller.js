@@ -9,7 +9,7 @@ const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 const gStickers = ['😎', '😭', '😍', '😂', '🤑', '🥳', '🤫', '🌷', '🤬']
 let gStickerState = { startInd: 0, endInd: 3 }
 let gUploadedPhoto
-
+const MAX_HEIGHT = 450
 const init = () => {
     gCanvas = document.querySelector('.my-canvas')
     gCtx = gCanvas.getContext('2d')
@@ -95,12 +95,11 @@ const calcCanvasSize = () => {
 
 
 const renderCanvas = () => {
-    if (!getMeme().selectedImgId) getMeme().selectedImgId = 1
     gImg = new Image()
     gImg.src = (getSelectedImage() > -1) ? `img/${getSelectedImage()}.jpg` : gUploadedPhoto.src
     gImg.onload = () => {
         calcCanvasSize()
-        let scale = Math.min(gCanvas.width / gImg.width, 450 / gImg.height)
+        const scale = Math.min(gCanvas.width / gImg.width, MAX_HEIGHT / gImg.height)
         gCanvas.width = gImg.width * scale
         gCanvas.height = gImg.height * scale
         gCtx.drawImage(gImg, 0, 0, gCanvas.width, gCanvas.height)
