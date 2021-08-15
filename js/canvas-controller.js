@@ -22,7 +22,7 @@ const addEventListeners = () => {
     gInput = document.querySelector('[name=meme-txt]')
     gInput.addEventListener('input', onText)
     addEventListenersGallery()
-    window.addEventListener('resize', resizeCanvas)
+    window.addEventListener('resize', renderCanvas)
     addMouseListeners()
     addTouchListeners()
 }
@@ -47,7 +47,7 @@ const onGrabMove = (ev) => {
         const dy = pos.y - currLine.pos.y
         moveCurrLine(dx, dy)
         gStartPos = pos
-        resizeCanvas()
+        renderCanvas()
     }
 }
 
@@ -83,16 +83,32 @@ const getEvPos = (ev) => {
 }
 
 
-const resizeCanvas = () => {
+const calcCanvasSize = () => {
     const elContainer = document.querySelector('.canvas-container')
     const elMemeContainer = document.querySelector('.meme-container')
     if (getComputedStyle(elMemeContainer, null).display === 'none') return
     let size = Math.min(elContainer.offsetWidth - 30, elContainer.offsetHeight)
-    if (size >= 500) size = 500
+    if (size >= 450) size = 450
     gCanvas.width = size
     gCanvas.height = size
-    renderCanvas()
 }
+
+
+const renderCanvas = () => {
+    gImg = new Image()
+    gImg.src = (getSelectedImage() > -1) ? `img/${getSelectedImage()}.jpg` : gUploadedPhoto.src
+    gImg.onload = () => {
+        calcCanvasSize()
+        let scale = Math.min(gCanvas.width / gImg.width, 450 / gImg.height)
+        gCanvas.width = gImg.width * scale
+        gCanvas.height = gImg.height * scale
+        gCtx.drawImage(gImg, 0, 0, gCanvas.width, gCanvas.height)
+        getMeme().lines.forEach((txt, ind) => {
+            drawText(txt.pos.x, txt.pos.y, txt.text, txt.colorStroke, txt.colorFill, txt.fontSize, txt.font, ind)
+        })
+    }
+}
+
 
 const drawText = (x, y, text, colorStroke, colorFill, fontSize, font, selectedInd) => {
     gCtx.lineWidth = 2
@@ -107,48 +123,48 @@ const drawText = (x, y, text, colorStroke, colorFill, fontSize, font, selectedIn
 
 const onText = () => {
     setTexts(gInput.value)
-    resizeCanvas()
+    renderCanvas()
 }
 
 
 const onSetColorFill = (color) => {
     setColorFill(color)
-    resizeCanvas()
+    renderCanvas()
 }
 
 const onSetColorStroke = (color) => {
     setColorStroke(color)
-    resizeCanvas()
+    renderCanvas()
 }
 
 const onPlus = () => {
     setFontSize(10)
-    resizeCanvas()
+    renderCanvas()
 }
 
 const onMinus = () => {
     setFontSize(-10)
-    resizeCanvas()
+    renderCanvas()
 }
 
 const onDown = () => {
     setPosY(10)
-    resizeCanvas()
+    renderCanvas()
 }
 
 const onUp = () => {
     setPosY(-10)
-    resizeCanvas()
+    renderCanvas()
 }
 
 const onRight = () => {
     setPosX(10)
-    resizeCanvas()
+    renderCanvas()
 }
 
 const onLeft = () => {
     setPosX(-10)
-    resizeCanvas()
+    renderCanvas()
 }
 
 const onSave = () => {
@@ -157,16 +173,11 @@ const onSave = () => {
     toggleModal()
 }
 
-const clearCanvas = () => {
-    gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
-}
 
 const onDeleteLine = () => {
     document.querySelector('[name=meme-txt]').value = ''
     deleteLine()
-    // clearCanvas()
-    resizeCanvas()
-
+    renderCanvas()
 }
 
 const onAddLine = () => {
@@ -179,19 +190,17 @@ const onAddLine = () => {
 const onSwitchLine = () => {
     switchLine()
     renderLinePrefs()
-    resizeCanvas()
+    renderCanvas()
 }
 
 const onChangeFont = (font) => {
     setFont(font)
-    // clearCanvas()
-    resizeCanvas()
+    renderCanvas()
 }
 
 const onAlign = side => {
     setAlign(side)
-    clearCanvas()
-    resizeCanvas()
+    renderCanvas()
 }
 
 const renderLinePrefs = () => {
@@ -246,7 +255,7 @@ const renderStickers = () => {
 
 const onSticker = emoji => {
     createLine(emoji)
-    resizeCanvas()
+    renderCanvas()
 }
 
 const onRightStickers = () => {
@@ -274,20 +283,6 @@ const loadImageFromInput = (ev, onImageReady) => {
         gUploadedPhoto.src = event.target.result
     }
     reader.readAsDataURL(ev.target.files[0])
-}
-
-const renderCanvas = () => {
-    gImg = new Image()
-    gImg.src = (getSelectedImage() > -1) ? `img/${getSelectedImage()}.jpg` : gUploadedPhoto.src
-    gImg.onload = () => {
-        let scale = Math.min(gCanvas.width / gImg.width, gCanvas.height / gImg.height);
-        gCanvas.width = gImg.width * scale
-        gCanvas.height = gImg.height * scale
-        gCtx.drawImage(gImg, 0, 0, gCanvas.width, gCanvas.height)
-        getMeme().lines.forEach((txt, ind) => {
-            drawText(txt.pos.x, txt.pos.y, txt.text, txt.colorStroke, txt.colorFill, txt.fontSize, txt.font, ind)
-        })
-    }
 }
 
 const onShare = () => {

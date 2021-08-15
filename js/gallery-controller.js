@@ -22,7 +22,7 @@ const renderGallery = () => {
     strHTML += filterInput().map((img) => {
         return `<div class="gallery-frame">
                     <img onclick="onImage(${img.id})" class="gallery-image" src="${img.url}">
-                    <div>${[...img.keywords].join(' , ')}</div>
+                    <div class="keywords">${[...img.keywords].join(' , ')}</div>
                 </div>`
     }).join('')
 
@@ -135,7 +135,7 @@ const onSavedMeme = (memeId) => {
     setMeme(loadMemeById(memeId))
     document.querySelector('[name=meme-txt]').value = getMeme().lines[getSelectedLine()].text
     toggleImage()
-    resizeCanvas()
+    renderCanvas()
     renderStickers()
 }
 
@@ -151,7 +151,7 @@ const onImage = (imgId = -1) => {
     setSelectedImage(+imgId)
     toggleImage()
     renderStickers()
-    resizeCanvas()
+    renderCanvas()
 }
 
 const toggleImage = () => {

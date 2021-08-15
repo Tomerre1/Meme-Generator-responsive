@@ -224,8 +224,12 @@ input[list] {
   cursor: pointer;
 }
 
+.keywords{
+  visibility:hidden;
+}
+
 .gallery-container {
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   justify-items: center;
   margin: 0 auto;
   grid-gap: 1.5rem;
@@ -251,6 +255,9 @@ input[list] {
 .gallery-image:hover {
   opacity: 0.75;
 }
+.gallery-frame:hover .keywords{
+  visibility: visible;
+}
 
 /* SAVED MEMES */
 .delete-saved {
@@ -275,6 +282,7 @@ input[list] {
 .canvas-container {
   flex-direction: column;
   gap: 50px;
+  width:100%;
 }
 canvas {
   display: block;
