@@ -1,8 +1,7 @@
 'use strict'
 const MEMES_DB = 'meme_db'
 let gMeme = { selectedImgId: 1, lines: [], selectedLineIdx: -1, id: makeId() }
-let gMemes = []
-
+let gMemes = (loadFromStorage(MEMES_DB)) ? loadFromStorage(MEMES_DB) : []
 
 const initMeme = () => {
     gMeme.selectedImgId = -1
